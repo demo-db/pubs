@@ -1,0 +1,2 @@
+# Keep the pinned upstream source byte-for-byte; its source SHA is checked by the converter.
+data-source/instpubs.sql whitespace=-blank-at-eol,-blank-at-eof

@@ -1,0 +1,817 @@
+{
+  "format": "ovdb-database/draft-1",
+  "id": "https://demodb.dev/pubs/",
+  "localId": "pubs",
+  "serverId": "https://demodb.dev/ovdb",
+  "serverDbBaseUrl": "https://demodb.dev/ovdb/db/pubs/",
+  "title": "Pubs",
+  "description": "Microsoft's classic publishing sample database, with authors, books, publishers, stores, sales, and publisher-logo images.",
+  "homepage": "https://pubs.demodb.dev/",
+  "apiUrl": "https://demodb.dev/ovdb/v1/databases/pubs",
+  "capabilities": {
+    "read": true,
+    "query": false,
+    "write": false
+  },
+  "deployment": {
+    "engine": "sqlite",
+    "url": "https://cloud.openvaultdb.com/ovdb/dbs/pubs",
+    "discovery": "https://demodb.dev/.well-known/openvaultdb"
+  },
+  "model": {
+    "id": "modelspec://github.com/demo-db/pubs/pubs",
+    "url": "https://pubs.demodb.dev/model/pubs.modelspec.json",
+    "hclUrl": "https://pubs.demodb.dev/model/pubs.modelspec.hcl"
+  },
+  "meaning": {
+    "id": "meaning://github.com/demo-db/pubs",
+    "url": "https://pubs.demodb.dev/model/pubs.meaning.yaml"
+  },
+  "publisher": {
+    "name": "DemoDB",
+    "url": "https://github.com/demo-db",
+    "repository": "https://github.com/demo-db/pubs"
+  },
+  "provenance": {
+    "repository": "https://github.com/microsoft/sql-server-samples",
+    "revision": "beaab06ef72831089ca80e5355d65e661fd19b26",
+    "path": "samples/databases/northwind-pubs/instpubs.sql",
+    "sha256": "b45b08b7c06441cc0b138b031ea5bd32bd5866aebf874c89d2ebf7fc6abb3691",
+    "license": "MIT",
+    "notes": "The pinned Microsoft SQL Server 2000 script is converted to SQLite by scripts/rebuild-source.py. Its original Microsoft 1994-2000 copyright header and the upstream repository MIT license are retained. The converter preserves all 255 INSERT statements, eleven tables, source keys and relationships, the titleview, seven ordinary equivalents of the SQL Server indexes, and eight publisher-logo GIF BLOBs. discounts and roysched have no primary key or unique index in the source; their entities omit ModelSpec keys. The generated descriptor records empty primary-key arrays but its current format does not include a unique-key inventory. Two text fields preserve the pinned source's U+FFFD replacement character in M�nchen; they are not reconstructed. Two-digit dates are normalized to ISO text; money values use SQLite numeric affinity and SQL Server collation behavior is not reproduced. The two omitted pubdate GETDATE() defaults are frozen to 2000-01-01 for reproducibility; SQL Server-only setup, triggers, and stored procedures are not part of the SQLite fixture. The sha256 identifies the generated SQLite fixture at data-source/source.sqlite; recipe inputs are identified separately by the provider manifest."
+  },
+  "licences": {
+    "data": "MIT",
+    "model": "MIT",
+    "meaning": "CC0-1.0"
+  },
+  "recordsets": [
+    {
+      "name": "authors",
+      "kind": "table",
+      "description": "Authors represented in the Pubs title catalogue.",
+      "rowCount": 23,
+      "columns": [
+        {
+          "name": "au_id",
+          "type": "CHAR(11)",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "au_lname",
+          "type": "VARCHAR(40)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "au_fname",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "phone",
+          "type": "CHAR(12)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "'UNKNOWN'"
+        },
+        {
+          "name": "address",
+          "type": "VARCHAR(40)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "city",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "state",
+          "type": "CHAR(2)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "zip",
+          "type": "CHAR(5)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "contract",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "au_id",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [],
+      "modelEntity": "authors"
+    },
+    {
+      "name": "publishers",
+      "kind": "table",
+      "description": "Publishing organizations, contact details, and locations.",
+      "rowCount": 8,
+      "columns": [
+        {
+          "name": "pub_id",
+          "type": "CHAR(4)",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "pub_name",
+          "type": "VARCHAR(40)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "city",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "state",
+          "type": "CHAR(2)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "country",
+          "type": "VARCHAR(30)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "'USA'"
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "pub_id",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [],
+      "modelEntity": "publishers"
+    },
+    {
+      "name": "titles",
+      "kind": "table",
+      "description": "Books and other publications with catalogue details and list prices.",
+      "rowCount": 18,
+      "columns": [
+        {
+          "name": "title_id",
+          "type": "CHAR(6)",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(80)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "type",
+          "type": "CHAR(12)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "'UNDECIDED'"
+        },
+        {
+          "name": "pub_id",
+          "type": "CHAR(4)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "price",
+          "type": "NUMERIC",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "advance",
+          "type": "NUMERIC",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "royalty",
+          "type": "INT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ytd_sales",
+          "type": "INT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "notes",
+          "type": "VARCHAR(200)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "pubdate",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "'2000-01-01'"
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "title_id",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "pub_id",
+          "table": "publishers",
+          "referencedColumn": "pub_id",
+          "constraint": 0,
+          "position": 0
+        }
+      ],
+      "modelEntity": "titles"
+    },
+    {
+      "name": "titleauthor",
+      "kind": "table",
+      "description": "Links authors to publications and records author order and royalty percentage.",
+      "rowCount": 25,
+      "columns": [
+        {
+          "name": "au_id",
+          "type": "CHAR(11)",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "title_id",
+          "type": "CHAR(6)",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 2,
+          "defaultValue": null
+        },
+        {
+          "name": "au_ord",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "royaltyper",
+          "type": "INT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "au_id",
+          "position": 1
+        },
+        {
+          "column": "title_id",
+          "position": 2
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "title_id",
+          "table": "titles",
+          "referencedColumn": "title_id",
+          "constraint": 0,
+          "position": 0
+        },
+        {
+          "column": "au_id",
+          "table": "authors",
+          "referencedColumn": "au_id",
+          "constraint": 1,
+          "position": 0
+        }
+      ],
+      "modelEntity": "titleauthor"
+    },
+    {
+      "name": "stores",
+      "kind": "table",
+      "description": "Retail stores that sell Pubs publications.",
+      "rowCount": 6,
+      "columns": [
+        {
+          "name": "stor_id",
+          "type": "CHAR(4)",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "stor_name",
+          "type": "VARCHAR(40)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "stor_address",
+          "type": "VARCHAR(40)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "city",
+          "type": "VARCHAR(20)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "state",
+          "type": "CHAR(2)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "zip",
+          "type": "CHAR(5)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "stor_id",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [],
+      "modelEntity": "stores"
+    },
+    {
+      "name": "sales",
+      "kind": "table",
+      "description": "Recorded sales by store, order number, date, title, quantity, and payment terms.",
+      "rowCount": 21,
+      "columns": [
+        {
+          "name": "stor_id",
+          "type": "CHAR(4)",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "ord_num",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 2,
+          "defaultValue": null
+        },
+        {
+          "name": "ord_date",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "qty",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "payterms",
+          "type": "VARCHAR(12)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "title_id",
+          "type": "CHAR(6)",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 3,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "stor_id",
+          "position": 1
+        },
+        {
+          "column": "ord_num",
+          "position": 2
+        },
+        {
+          "column": "title_id",
+          "position": 3
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "title_id",
+          "table": "titles",
+          "referencedColumn": "title_id",
+          "constraint": 0,
+          "position": 0
+        },
+        {
+          "column": "stor_id",
+          "table": "stores",
+          "referencedColumn": "stor_id",
+          "constraint": 1,
+          "position": 0
+        }
+      ],
+      "modelEntity": "sales"
+    },
+    {
+      "name": "roysched",
+      "kind": "table",
+      "description": "Royalty percentages for title sales across sales-range bands.",
+      "rowCount": 86,
+      "columns": [
+        {
+          "name": "title_id",
+          "type": "CHAR(6)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "lorange",
+          "type": "INT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "hirange",
+          "type": "INT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "royalty",
+          "type": "INT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [],
+      "foreignKeys": [
+        {
+          "column": "title_id",
+          "table": "titles",
+          "referencedColumn": "title_id",
+          "constraint": 0,
+          "position": 0
+        }
+      ],
+      "modelEntity": "roysched"
+    },
+    {
+      "name": "discounts",
+      "kind": "table",
+      "description": "Initial, volume, and store-specific sales discounts.",
+      "rowCount": 3,
+      "columns": [
+        {
+          "name": "discounttype",
+          "type": "VARCHAR(40)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "stor_id",
+          "type": "CHAR(4)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "lowqty",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "highqty",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "discount",
+          "type": "DECIMAL(4,2)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [],
+      "foreignKeys": [
+        {
+          "column": "stor_id",
+          "table": "stores",
+          "referencedColumn": "stor_id",
+          "constraint": 0,
+          "position": 0
+        }
+      ],
+      "modelEntity": "discounts"
+    },
+    {
+      "name": "jobs",
+      "kind": "table",
+      "description": "Job titles and the permitted employee job-level range.",
+      "rowCount": 14,
+      "columns": [
+        {
+          "name": "job_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "job_desc",
+          "type": "VARCHAR(50)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "'New Position - title not formalized yet'"
+        },
+        {
+          "name": "min_lvl",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "max_lvl",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "job_id",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [],
+      "modelEntity": "jobs"
+    },
+    {
+      "name": "pub_info",
+      "kind": "table",
+      "description": "Publisher descriptions and the original GIF logos stored as BLOBs.",
+      "rowCount": 8,
+      "columns": [
+        {
+          "name": "pub_id",
+          "type": "CHAR(4)",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "logo",
+          "type": "BLOB",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "pr_info",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "pub_id",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "pub_id",
+          "table": "publishers",
+          "referencedColumn": "pub_id",
+          "constraint": 0,
+          "position": 0
+        }
+      ],
+      "modelEntity": "pub_info"
+    },
+    {
+      "name": "employee",
+      "kind": "table",
+      "description": "Employees, their job levels, hire dates, and publisher assignments.",
+      "rowCount": 43,
+      "columns": [
+        {
+          "name": "emp_id",
+          "type": "CHAR(10)",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "fname",
+          "type": "VARCHAR(20)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "minit",
+          "type": "CHAR(1)",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "lname",
+          "type": "VARCHAR(30)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "job_id",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "1"
+        },
+        {
+          "name": "job_lvl",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "10"
+        },
+        {
+          "name": "pub_id",
+          "type": "CHAR(4)",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "'9952'"
+        },
+        {
+          "name": "hire_date",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "'2000-01-01'"
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "emp_id",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "pub_id",
+          "table": "publishers",
+          "referencedColumn": "pub_id",
+          "constraint": 0,
+          "position": 0
+        },
+        {
+          "column": "job_id",
+          "table": "jobs",
+          "referencedColumn": "job_id",
+          "constraint": 1,
+          "position": 0
+        }
+      ],
+      "modelEntity": "employee"
+    }
+  ]
+}
