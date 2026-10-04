@@ -102,12 +102,12 @@
       "bytes": 11942
     },
     "metadata/contract.json": {
-      "sha256": "178d1757e0360fa9a923673426101f48f151ab4a6310f89441c5d54a432822e8",
-      "bytes": 172665
+      "sha256": "32224efdbecd57962f32a0aad81653bbf5085788df69185be30b2c7c0910d659",
+      "bytes": 177269
     },
     "metadata/schema.json": {
-      "sha256": "b5f52024de76f4f5b08b700dd88503b2272f2acd568e05427b89e7d0ed69bb69",
-      "bytes": 151696
+      "sha256": "09da151ef4e9ddb458d0b3b5606f21c1f2951fe704f5912b00817bfaa4aa5a33",
+      "bytes": 155956
     },
     "model/pubs.meaning.yaml": {
       "sha256": "c2c1ba018c7381a274403c5fc3dd0f2fa7aaac3a7dbbd31eacb82950e64c7e83",
