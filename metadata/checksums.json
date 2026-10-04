@@ -98,12 +98,12 @@
       "bytes": 212992
     },
     "manifest.json": {
-      "sha256": "e62c141ed9d0cfb8b9091ff6f274902c2fb729f54856fd871241fd38ed4e9761",
-      "bytes": 11946
+      "sha256": "00b830249f64ae7c6a669b4bf14e70e09068041482d771959012db868dcfdb16",
+      "bytes": 11942
     },
     "metadata/contract.json": {
-      "sha256": "0b427916f82c14d1a702e072316e497f8c20918f2377fb76fad97b9e98b62474",
-      "bytes": 172669
+      "sha256": "178d1757e0360fa9a923673426101f48f151ab4a6310f89441c5d54a432822e8",
+      "bytes": 172665
     },
     "metadata/schema.json": {
       "sha256": "b5f52024de76f4f5b08b700dd88503b2272f2acd568e05427b89e7d0ed69bb69",
@@ -122,8 +122,8 @@
       "bytes": 5807
     },
     "ovdb-database.json": {
-      "sha256": "6df81e8f260500f202bb168152b88203a2bea28194630773bf8a879785015118",
-      "bytes": 22278
+      "sha256": "42a9ec5d9179b64a3d848fc661a8a1b230d691643ecf71ca42fc2fa1830533c1",
+      "bytes": 22277
     },
     "ovdb.yaml": {
       "sha256": "0c1ef1f5349c8fda227b055f2904ff2fce08cfbd9762cae3e45e3df800fe0868",
