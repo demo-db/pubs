@@ -10,7 +10,7 @@
   "apiUrl": "https://demodb.dev/ovdb/v1/databases/pubs",
   "capabilities": {
     "read": true,
-    "query": false,
+    "query": true,
     "write": false
   },
   "deployment": {

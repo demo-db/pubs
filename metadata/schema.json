@@ -122,6 +122,24 @@
           "position": 1
         }
       ],
+      "uniqueKeys": [],
+      "uniqueIndexes": [
+        {
+          "name": "sqlite_autoindex_authors_1",
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "position": 0,
+              "column": "au_id",
+              "expression": false,
+              "descending": false,
+              "collation": "BINARY"
+            }
+          ],
+          "sql": null
+        }
+      ],
       "foreignKeys": [],
       "rowCount": 23,
       "viewSql": null,
@@ -318,6 +336,8 @@
         }
       ],
       "primaryKey": [],
+      "uniqueKeys": [],
+      "uniqueIndexes": [],
       "foreignKeys": [
         {
           "column": "stor_id",
@@ -442,6 +462,24 @@
         {
           "column": "emp_id",
           "position": 1
+        }
+      ],
+      "uniqueKeys": [],
+      "uniqueIndexes": [
+        {
+          "name": "sqlite_autoindex_employee_1",
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "position": 0,
+              "column": "emp_id",
+              "expression": false,
+              "descending": false,
+              "collation": "BINARY"
+            }
+          ],
+          "sql": null
         }
       ],
       "foreignKeys": [
@@ -642,6 +680,8 @@
           "position": 1
         }
       ],
+      "uniqueKeys": [],
+      "uniqueIndexes": [],
       "foreignKeys": [],
       "rowCount": 14,
       "viewSql": null,
@@ -764,6 +804,24 @@
           "position": 1
         }
       ],
+      "uniqueKeys": [],
+      "uniqueIndexes": [
+        {
+          "name": "sqlite_autoindex_pub_info_1",
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "position": 0,
+              "column": "pub_id",
+              "expression": false,
+              "descending": false,
+              "collation": "BINARY"
+            }
+          ],
+          "sql": null
+        }
+      ],
       "foreignKeys": [
         {
           "column": "pub_id",
@@ -884,6 +942,24 @@
           "position": 1
         }
       ],
+      "uniqueKeys": [],
+      "uniqueIndexes": [
+        {
+          "name": "sqlite_autoindex_publishers_1",
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "position": 0,
+              "column": "pub_id",
+              "expression": false,
+              "descending": false,
+              "collation": "BINARY"
+            }
+          ],
+          "sql": null
+        }
+      ],
       "foreignKeys": [],
       "rowCount": 8,
       "viewSql": null,
@@ -994,6 +1070,8 @@
         }
       ],
       "primaryKey": [],
+      "uniqueKeys": [],
+      "uniqueIndexes": [],
       "foreignKeys": [
         {
           "column": "title_id",
@@ -1160,6 +1238,38 @@
         {
           "column": "title_id",
           "position": 3
+        }
+      ],
+      "uniqueKeys": [],
+      "uniqueIndexes": [
+        {
+          "name": "sqlite_autoindex_sales_1",
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "position": 0,
+              "column": "stor_id",
+              "expression": false,
+              "descending": false,
+              "collation": "BINARY"
+            },
+            {
+              "position": 1,
+              "column": "ord_num",
+              "expression": false,
+              "descending": false,
+              "collation": "BINARY"
+            },
+            {
+              "position": 2,
+              "column": "title_id",
+              "expression": false,
+              "descending": false,
+              "collation": "BINARY"
+            }
+          ],
+          "sql": null
         }
       ],
       "foreignKeys": [
@@ -1355,6 +1465,24 @@
           "position": 1
         }
       ],
+      "uniqueKeys": [],
+      "uniqueIndexes": [
+        {
+          "name": "sqlite_autoindex_stores_1",
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "position": 0,
+              "column": "stor_id",
+              "expression": false,
+              "descending": false,
+              "collation": "BINARY"
+            }
+          ],
+          "sql": null
+        }
+      ],
       "foreignKeys": [],
       "rowCount": 6,
       "viewSql": null,
@@ -1462,6 +1590,31 @@
         {
           "column": "title_id",
           "position": 2
+        }
+      ],
+      "uniqueKeys": [],
+      "uniqueIndexes": [
+        {
+          "name": "sqlite_autoindex_titleauthor_1",
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "position": 0,
+              "column": "au_id",
+              "expression": false,
+              "descending": false,
+              "collation": "BINARY"
+            },
+            {
+              "position": 1,
+              "column": "title_id",
+              "expression": false,
+              "descending": false,
+              "collation": "BINARY"
+            }
+          ],
+          "sql": null
         }
       ],
       "foreignKeys": [
@@ -1670,6 +1823,24 @@
         {
           "column": "title_id",
           "position": 1
+        }
+      ],
+      "uniqueKeys": [],
+      "uniqueIndexes": [
+        {
+          "name": "sqlite_autoindex_titles_1",
+          "origin": "pk",
+          "partial": false,
+          "columns": [
+            {
+              "position": 0,
+              "column": "title_id",
+              "expression": false,
+              "descending": false,
+              "collation": "BINARY"
+            }
+          ],
+          "sql": null
         }
       ],
       "foreignKeys": [
@@ -2000,5 +2171,6 @@
         }
       ]
     }
-  ]
+  ],
+  "sourceViews": []
 }

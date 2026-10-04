@@ -98,16 +98,16 @@
       "bytes": 212992
     },
     "manifest.json": {
-      "sha256": "e62c141ed9d0cfb8b9091ff6f274902c2fb729f54856fd871241fd38ed4e9761",
-      "bytes": 11946
+      "sha256": "00b830249f64ae7c6a669b4bf14e70e09068041482d771959012db868dcfdb16",
+      "bytes": 11942
     },
     "metadata/contract.json": {
-      "sha256": "0b427916f82c14d1a702e072316e497f8c20918f2377fb76fad97b9e98b62474",
-      "bytes": 172669
+      "sha256": "32224efdbecd57962f32a0aad81653bbf5085788df69185be30b2c7c0910d659",
+      "bytes": 177269
     },
     "metadata/schema.json": {
-      "sha256": "b5f52024de76f4f5b08b700dd88503b2272f2acd568e05427b89e7d0ed69bb69",
-      "bytes": 151696
+      "sha256": "09da151ef4e9ddb458d0b3b5606f21c1f2951fe704f5912b00817bfaa4aa5a33",
+      "bytes": 155956
     },
     "model/pubs.meaning.yaml": {
       "sha256": "c2c1ba018c7381a274403c5fc3dd0f2fa7aaac3a7dbbd31eacb82950e64c7e83",
@@ -122,8 +122,8 @@
       "bytes": 5807
     },
     "ovdb-database.json": {
-      "sha256": "6df81e8f260500f202bb168152b88203a2bea28194630773bf8a879785015118",
-      "bytes": 22278
+      "sha256": "42a9ec5d9179b64a3d848fc661a8a1b230d691643ecf71ca42fc2fa1830533c1",
+      "bytes": 22277
     },
     "ovdb.yaml": {
       "sha256": "0c1ef1f5349c8fda227b055f2904ff2fce08cfbd9762cae3e45e3df800fe0868",
