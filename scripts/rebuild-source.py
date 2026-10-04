@@ -8,15 +8,18 @@ It does not try to be a general T-SQL converter.
 from __future__ import annotations
 
 import hashlib
+import json
 import re
 import sqlite3
 import sys
+import tempfile
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data-source" / "instpubs.sql"
 OUTPUT = ROOT / "data-source" / "source.sqlite"
+MANIFEST = ROOT / "manifest.json"
 EXPECTED_SOURCE_SHA256 = "c66479d429f482ef788290dd94bb315f2277327765f480b2b21be6f359eb4bad"
 
 
@@ -304,15 +307,15 @@ def validate(db: sqlite3.Connection, tables: set[str], insertion_count: int) -> 
         raise ValueError("NULL-key rejection probes changed the published fixture")
 
 
-def main() -> None:
+def build_database(output: Path) -> None:
     source_bytes = SOURCE.read_bytes()
     actual_hash = hashlib.sha256(source_bytes).hexdigest()
     if actual_hash != EXPECTED_SOURCE_SHA256:
         raise ValueError(f"pinned source SHA-256 mismatch: {actual_hash}")
     source = source_bytes.decode("utf-8")
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.unlink(missing_ok=True)
-    db = sqlite3.connect(OUTPUT)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.unlink(missing_ok=True)
+    db = sqlite3.connect(output)
     try:
         db.execute("PRAGMA foreign_keys = ON")
         tables = create_tables(db, source)
@@ -330,9 +333,84 @@ def main() -> None:
         create_titleview(db, source)
         validate(db, tables, inserted)
         db.commit()
-        print(f"built {OUTPUT.relative_to(ROOT)}: {len(tables)} tables, {inserted} source rows, {index_count} indexes, titleview")
+        print(f"built {output}: {len(tables)} tables, {inserted} source rows, {index_count} indexes, titleview")
     finally:
         db.close()
+
+
+def sqlite_snapshot(path: Path) -> dict[str, object]:
+    """Capture logical schema and all table/view values, independent of file headers."""
+    db = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+    try:
+        db.row_factory = None
+        objects = db.execute(
+            "SELECT type, name, tbl_name, sql FROM sqlite_master "
+            "WHERE name NOT LIKE 'sqlite_%' ORDER BY type, name"
+        ).fetchall()
+        tables = [row[1] for row in objects if row[0] == "table"]
+        views = [row[1] for row in objects if row[0] == "view"]
+
+        def encode_cell(value: object) -> list[object]:
+            if isinstance(value, bytes):
+                return ["blob", value.hex()]
+            if value is None:
+                return ["null"]
+            if isinstance(value, int):
+                return ["integer", value]
+            if isinstance(value, float):
+                return ["real", value.hex()]
+            return ["text", value]
+
+        def canonical_rows(name: str) -> list[list[list[object]]]:
+            rows = [[encode_cell(value) for value in row] for row in db.execute(f'SELECT * FROM "{name}"')]
+            return sorted(rows, key=lambda row: json.dumps(row, ensure_ascii=False, separators=(",", ":")))
+
+        table_metadata = {}
+        for table in tables:
+            columns = db.execute(f'PRAGMA table_xinfo("{table}")').fetchall()
+            foreign_keys = db.execute(f'PRAGMA foreign_key_list("{table}")').fetchall()
+            indexes = []
+            for index in db.execute(f'PRAGMA index_list("{table}")').fetchall():
+                indexes.append((index, db.execute(f'PRAGMA index_xinfo("{index[1]}")').fetchall()))
+            table_metadata[table] = {
+                "columns": columns,
+                "foreignKeys": foreign_keys,
+                "indexes": indexes,
+                "rows": canonical_rows(table),
+            }
+        return {
+            "objects": objects,
+            "tables": table_metadata,
+            "views": {view: canonical_rows(view) for view in views},
+        }
+    finally:
+        db.close()
+
+
+def check_rebuild() -> None:
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    expected_hash = manifest["source"]["databaseSha256"]
+    actual_hash = hashlib.sha256(OUTPUT.read_bytes()).hexdigest()
+    if actual_hash != expected_hash:
+        raise ValueError(f"checked-in SQLite artifact SHA-256 mismatch: expected {expected_hash}, got {actual_hash}")
+    with tempfile.TemporaryDirectory(prefix="pubs-source-check-") as temp_dir:
+        rebuilt = Path(temp_dir) / "rebuilt.sqlite"
+        build_database(rebuilt)
+        if sqlite_snapshot(OUTPUT) != sqlite_snapshot(rebuilt):
+            raise ValueError(
+                "rebuilt database differs logically from data-source/source.sqlite "
+                "(schema, constraints, indexes, views, rows, or BLOBs)"
+            )
+    print(f"verified checked-in SQLite artifact {expected_hash} and full logical rebuild equivalence")
+
+
+def main() -> None:
+    if sys.argv[1:] == ["--check"]:
+        check_rebuild()
+    elif sys.argv[1:]:
+        raise ValueError("usage: rebuild-source.py [--check]")
+    else:
+        build_database(OUTPUT)
 
 
 if __name__ == "__main__":

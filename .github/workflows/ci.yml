@@ -17,8 +17,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Rebuild the pinned SQLite source
-        run: python3 scripts/rebuild-source.py
+      - name: Verify the pinned SQLite source rebuild
+        run: python3 scripts/rebuild-source.py --check
 
       - name: Install the immutable shared provider generator
         env:
