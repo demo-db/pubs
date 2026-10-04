@@ -1,0 +1,237 @@
+{
+  "contractVersion": 1,
+  "id": "pubs",
+  "name": "Pubs",
+  "description": "Microsoft's classic publishing sample database, with authors, books, publishers, stores, sales, and publisher-logo images.",
+  "domain": "Publishing",
+  "siteHost": "pubs.demodb.dev",
+  "aliases": [],
+  "source": {
+    "repository": "https://github.com/microsoft/sql-server-samples",
+    "version": "SQL Server 2000 sample",
+    "revision": "beaab06ef72831089ca80e5355d65e661fd19b26",
+    "path": "samples/databases/northwind-pubs/instpubs.sql",
+    "license": "MIT",
+    "licenseFile": "data-source/LICENSE.txt",
+    "notes": "The pinned Microsoft SQL Server 2000 sample script is converted to SQLite by scripts/rebuild-source.py. Its original Microsoft 1994-2000 copyright header and the upstream repository MIT license are retained. The converter preserves all 255 INSERT statements, eleven tables, source keys and relationships, the titleview, seven ordinary equivalents of the SQL Server indexes, and eight publisher-logo GIF BLOBs. discounts and roysched have no primary key or unique index in the source; their entities omit ModelSpec keys. The generated descriptor records empty primary-key arrays but its current format does not include a unique-key inventory. Two text fields preserve the pinned source's U+FFFD replacement character in M�nchen; they are not reconstructed. Two-digit dates are normalized to ISO text; money values use SQLite numeric affinity and SQL Server collation behavior is not reproduced. The two omitted pubdate GETDATE() defaults are frozen to 2000-01-01 for reproducibility; SQL Server-only setup, triggers, and stored procedures are not part of the SQLite fixture. The build recipe validates complete logical equivalence to the committed SQLite artifact; SQLite file bytes may vary across SQLite library versions. SQLite and JSON preserve NULL values; generated CSV represents NULL as an empty field, which is indistinguishable from empty text in CSV. BLOB values in JSON and CSV are base64 encoded.",
+    "recipe": [
+      {
+        "path": "data-source/instpubs.sql",
+        "sha256": "c66479d429f482ef788290dd94bb315f2277327765f480b2b21be6f359eb4bad",
+        "sourceSha256": "c66479d429f482ef788290dd94bb315f2277327765f480b2b21be6f359eb4bad"
+      }
+    ],
+    "databaseSha256": "b45b08b7c06441cc0b138b031ea5bd32bd5866aebf874c89d2ebf7fc6abb3691"
+  },
+  "dataFile": "data-source/source.sqlite",
+  "semantics": {
+    "tableConcepts": {
+      "authors": ["author"],
+      "publishers": ["publisher"],
+      "titles": ["book"],
+      "stores": ["store"],
+      "employee": ["employee"],
+      "sales": ["sale"]
+    }
+  },
+  "tableDescriptions": {
+    "authors": "Authors represented in the Pubs title catalogue.",
+    "publishers": "Publishing organizations, contact details, and locations.",
+    "titles": "Books and other publications with catalogue details and list prices.",
+    "titleauthor": "Links authors to publications and records author order and royalty percentage.",
+    "stores": "Retail stores that sell Pubs publications.",
+    "sales": "Recorded sales by store, order number, date, title, quantity, and payment terms.",
+    "roysched": "Royalty percentages for title sales across sales-range bands.",
+    "discounts": "Initial, volume, and store-specific sales discounts.",
+    "jobs": "Job titles and the permitted employee job-level range.",
+    "pub_info": "Publisher descriptions and the original GIF logos stored as BLOBs.",
+    "employee": "Employees, their job levels, hire dates, and publisher assignments."
+  },
+  "columnDescriptions": {
+    "authors": {
+      "au_id": "The source author identifier, retained as its original hyphenated text value.",
+      "zip": "Postal code stored as five-character text so any leading zero is preserved.",
+      "contract": "Whether the author has a contract in the source sample."
+    },
+    "publishers": {
+      "country": "Literal source country names (France, Germany, and USA); these are not normalized ISO country codes.",
+      "state": "Optional two-character state field; the source leaves it NULL for publishers without a state.",
+      "city": "Publisher city copied from the source. The Munich value contains the source's U+FFFD replacement character (M�nchen); it is not reconstructed."
+    },
+    "titles": {
+      "type": "Source publication category such as business, psychology, or trad_cook.",
+      "price": "Source MONEY value represented with SQLite numeric affinity; fixed four-decimal scale is not enforced.",
+      "advance": "Source MONEY value represented with SQLite numeric affinity; fixed four-decimal scale is not enforced.",
+      "pubdate": "Publication date stored as ISO date text. The source omits this value for two rows and relies on GETDATE(); the reproducible fixture freezes the column default to 2000-01-01."
+    },
+    "stores": {
+      "zip": "Postal code stored as five-character text so any leading zero is preserved."
+    },
+    "sales": {
+      "ord_date": "Order date stored as ISO date text after converting the source's two-digit-year literals.",
+      "qty": "Quantity of the publication in the recorded sale row."
+    },
+    "discounts": {
+      "lowqty": "Optional lower quantity bound for the discount.",
+      "highqty": "Optional upper quantity bound for the discount.",
+      "discount": "Discount rate as stored in the source sample."
+    },
+    "roysched": {
+      "lorange": "Lower sales-range bound for this title's royalty schedule row.",
+      "hirange": "Upper sales-range bound for this title's royalty schedule row."
+    },
+    "pub_info": {
+      "logo": "Original publisher-logo GIF bytes stored as a BLOB; generated JSON and CSV exports encode BLOBs as base64.",
+      "pr_info": "Publisher information copied from the source. The GGG&G text contains the source's U+FFFD replacement character in M�nchen; it is not reconstructed."
+    },
+    "employee": {
+      "hire_date": "Hire date stored as ISO date text after converting the source's two-digit-year literals."
+    }
+  },
+  "capabilities": {
+    "exports": ["sqlite", "csv", "json", "sql"],
+    "ovdb": {
+      "available": false,
+      "canonicalUrl": "https://demodb.dev/pubs/",
+      "serverId": "https://demodb.dev/ovdb",
+      "serverDbBaseUrl": "https://demodb.dev/ovdb/db/pubs/",
+      "connection": "https://demodb.dev/ovdb/v1/databases/pubs",
+      "query": false,
+      "readOnly": true,
+      "deploymentVerified": false
+    },
+    "datatug": {"available": true, "mode": "static-json"}
+  },
+  "queries": [
+    {
+      "title": "Titles by publisher",
+      "description": "List each publication with its publisher and catalogue price.",
+      "sql": "SELECT titles.title, publishers.pub_name, titles.price FROM titles LEFT JOIN publishers USING (pub_id) ORDER BY publishers.pub_name, titles.title;"
+    },
+    {
+      "title": "Books by author",
+      "description": "Show publications with their authors in the recorded author order.",
+      "sql": "SELECT titles.title, authors.au_lname, authors.au_fname, titleauthor.au_ord FROM titleauthor JOIN authors USING (au_id) JOIN titles USING (title_id) ORDER BY titles.title, titleauthor.au_ord;"
+    },
+    {
+      "title": "Units sold by title",
+      "description": "Sum the recorded sales quantities for each publication.",
+      "sql": "SELECT titles.title, SUM(sales.qty) AS units_sold FROM sales JOIN titles USING (title_id) GROUP BY titles.title_id ORDER BY units_sold DESC, titles.title LIMIT 10;"
+    }
+  ],
+  "generator": {
+    "publisher": {
+      "name": "DemoDB",
+      "url": "https://github.com/demo-db",
+      "repository": "https://github.com/demo-db/pubs"
+    },
+    "licences": {"model": "MIT", "meaning": "CC0-1.0"},
+    "model": {
+      "address": "modelspec://github.com/demo-db/pubs/pubs",
+      "moduleId": "github.com/demo-db/pubs/pubs",
+      "name": "pubs",
+      "version": "0.1.0"
+    },
+    "ovdb": {
+      "query": false,
+      "deployment": {
+        "engine": "sqlite",
+        "url": "https://cloud.openvaultdb.com/ovdb/dbs/pubs",
+        "discovery": "https://demodb.dev/.well-known/openvaultdb"
+      },
+      "recordsets": ["authors", "publishers", "titles", "titleauthor", "stores", "sales", "roysched", "discounts", "jobs", "pub_info", "employee"]
+    },
+    "meaning": {
+      "id": "pubs",
+      "address": "meaning://github.com/demo-db/pubs",
+      "name": "Pubs",
+      "description": "Authors, books, publishers, retail stores, employees, and publishing sales in the classic Microsoft Pubs sample.",
+      "license": "CC0-1.0",
+      "core": {
+        "address": "meaning://github.com/meaninggraph/core",
+        "revision": "982916d73f0a35ff2558b0062f58aa3ac4f24d97"
+      },
+      "concepts": [
+        {
+          "id": "author",
+          "kind": "entity",
+          "label": "Author",
+          "description": "A person who wrote or co-wrote a Pubs publication.",
+          "extends": "person",
+          "bindings": [
+            {"recordset": "authors", "role": "entity"},
+            {"recordset": "titleauthor", "property": "au_id", "role": "foreign-key"}
+          ]
+        },
+        {
+          "id": "publisher",
+          "kind": "entity",
+          "label": "Publisher",
+          "description": "An organization that publishes books and other titles.",
+          "extends": "organization",
+          "bindings": [
+            {"recordset": "publishers", "role": "entity"},
+            {"recordset": "titles", "property": "pub_id", "role": "foreign-key"},
+            {"recordset": "pub_info", "property": "pub_id", "role": "foreign-key"},
+            {"recordset": "employee", "property": "pub_id", "role": "foreign-key"}
+          ]
+        },
+        {
+          "id": "book",
+          "kind": "entity",
+          "label": "Book",
+          "description": "A publication listed in the Pubs title catalogue.",
+          "bindings": [
+            {"recordset": "titles", "role": "entity"},
+            {"recordset": "titleauthor", "property": "title_id", "role": "foreign-key"},
+            {"recordset": "sales", "property": "title_id", "role": "foreign-key"},
+            {"recordset": "roysched", "property": "title_id", "role": "foreign-key"}
+          ]
+        },
+        {
+          "id": "store",
+          "kind": "entity",
+          "label": "Store",
+          "description": "A retail location that sells publications.",
+          "bindings": [
+            {"recordset": "stores", "role": "entity"},
+            {"recordset": "sales", "property": "stor_id", "role": "foreign-key"},
+            {"recordset": "discounts", "property": "stor_id", "role": "foreign-key"}
+          ]
+        },
+        {
+          "id": "employee",
+          "kind": "entity",
+          "label": "Employee",
+          "description": "An employee assigned to a Pubs publisher.",
+          "extends": "meaning://github.com/meaninggraph/core/employee?ref=982916d73f0a35ff2558b0062f58aa3ac4f24d97",
+          "bindings": [{"recordset": "employee", "role": "entity"}]
+        },
+        {
+          "id": "sale",
+          "kind": "entity",
+          "label": "Sale",
+          "description": "A completed store sale of one publication, with quantity, date, and payment terms.",
+          "bindings": [{"recordset": "sales", "role": "entity"}]
+        },
+        {
+          "id": "sale-quantity",
+          "kind": "attribute",
+          "label": "Sale quantity",
+          "description": "The number of copies of a title in one recorded sale row.",
+          "of": "sale",
+          "bindings": [{"recordset": "sales", "property": "qty", "role": "value"}]
+        },
+        {
+          "id": "book-price",
+          "kind": "attribute",
+          "label": "Book price",
+          "description": "The list price recorded for a publication in the catalogue.",
+          "of": "book",
+          "extends": "price",
+          "bindings": [{"recordset": "titles", "property": "price", "role": "value"}]
+        }
+      ]
+    }
+  }
+}

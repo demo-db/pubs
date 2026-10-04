@@ -1,0 +1,49 @@
+{
+  "format": "ovdb-manifest/draft-1",
+  "id": "pubs",
+  "title": "Pubs",
+  "description": "Microsoft's classic publishing sample database, with authors, books, publishers, stores, sales, and publisher-logo images.",
+  "homepage": "https://pubs.demodb.dev/",
+  "url": "https://demodb.dev/pubs/",
+  "deployment": {
+    "engine": "sqlite",
+    "url": "https://cloud.openvaultdb.com/ovdb/dbs/pubs",
+    "discovery": "https://demodb.dev/.well-known/openvaultdb"
+  },
+  "model": {
+    "address": "modelspec://github.com/demo-db/pubs/pubs",
+    "modelspec": "model/pubs.modelspec.json",
+    "hcl": "model/pubs.modelspec.hcl"
+  },
+  "meaning": {
+    "file": "model/pubs.meaning.yaml",
+    "graph": {
+      "id": "pubs",
+      "address": "meaning://github.com/demo-db/pubs"
+    }
+  },
+  "publisher": {
+    "name": "DemoDB",
+    "url": "https://github.com/demo-db",
+    "repository": "https://github.com/demo-db/pubs"
+  },
+  "licences": {
+    "data": "MIT",
+    "model": "MIT",
+    "meaning": "CC0-1.0"
+  },
+  "recordsets": [
+    "authors",
+    "publishers",
+    "titles",
+    "titleauthor",
+    "stores",
+    "sales",
+    "roysched",
+    "discounts",
+    "jobs",
+    "pub_info",
+    "employee"
+  ],
+  "recordset_entities": {}
+}
