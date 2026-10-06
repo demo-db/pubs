@@ -1,0 +1,8 @@
+{
+  "pk-W1sic3RyaW5nIiwiNjM4MCJdXQ": {"city":"Seattle","state":"WA","stor_address":"788 Catamaugus Ave.","stor_id":"6380","stor_name":"Eric the Read Books","zip":"98056"},
+  "pk-W1sic3RyaW5nIiwiNzA2NiJdXQ": {"city":"Tustin","state":"CA","stor_address":"567 Pasadena Ave.","stor_id":"7066","stor_name":"Barnum's","zip":"92789"},
+  "pk-W1sic3RyaW5nIiwiNzA2NyJdXQ": {"city":"Los Gatos","state":"CA","stor_address":"577 First St.","stor_id":"7067","stor_name":"News \u0026 Brews","zip":"96745"},
+  "pk-W1sic3RyaW5nIiwiNzEzMSJdXQ": {"city":"Remulade","state":"WA","stor_address":"24-A Avogadro Way","stor_id":"7131","stor_name":"Doc-U-Mat: Quality Laundry and Books","zip":"98014"},
+  "pk-W1sic3RyaW5nIiwiNzg5NiJdXQ": {"city":"Fremont","state":"CA","stor_address":"89 Madison St.","stor_id":"7896","stor_name":"Fricative Bookshop","zip":"90019"},
+  "pk-W1sic3RyaW5nIiwiODA0MiJdXQ": {"city":"Portland","state":"OR","stor_address":"679 Carson St.","stor_id":"8042","stor_name":"Bookbeat","zip":"89076"}
+}

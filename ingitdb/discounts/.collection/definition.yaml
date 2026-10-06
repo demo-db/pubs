@@ -1,0 +1,59 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    discounttype:
+        type: string
+        required: true
+    stor_id:
+        type: string
+    lowqty:
+        type: int
+    highqty:
+        type: int
+    discount:
+        type: string
+        required: true
+columns_order:
+    - discounttype
+    - stor_id
+    - lowqty
+    - highqty
+    - discount
+source_schema:
+    key_mode: export-ordinal
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE \"discounts\" (discounttype VARCHAR(40) NOT NULL, stor_id CHAR(4) NULL REFERENCES stores(stor_id), lowqty INTEGER NULL, highqty INTEGER NULL, discount DECIMAL(4,2) NOT NULL)","columns":[{"name":"discounttype","declaredType":"VARCHAR(40)","notNull":true},{"name":"stor_id","declaredType":"CHAR(4)","notNull":false},{"name":"lowqty","declaredType":"INTEGER","notNull":false},{"name":"highqty","declaredType":"INTEGER","notNull":false},{"name":"discount","declaredType":"DECIMAL(4,2)","notNull":true}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    storage_class_files:
+        - source-storage-0001.jsonl
+    fields:
+        - name: discounttype
+          type: string
+          nullable: false
+        - name: stor_id
+          type: string
+          nullable: true
+        - name: lowqty
+          type: int
+          nullable: true
+        - name: highqty
+          type: int
+          nullable: true
+        - name: discount
+          type: decimal
+          nullable: false
+          precision: 4
+          scale: 2
+          encoding: decimal-string
+    foreign_keys:
+        - name: discounts_fk_0
+          fields:
+            - stor_id
+          referenced_collection: stores
+          referenced_fields:
+            - stor_id
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION

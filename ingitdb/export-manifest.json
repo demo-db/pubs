@@ -1,5 +1,10 @@
 {
-  "format": "demodb-ingitdb-export/v1",
+  "format": "demodb-storage-export/v2",
+  "generator": "datatug-dalgo-to-ingitdb",
+  "recordFormat": "json",
+  "generatorVersion": "0.61.1",
+  "generatorCommit": "e983dd2732b31c8d59cf80c5367ec07c4d9d5f48",
+  "generatorSha256": "567fa6b0f278bb64c659322b8a2a6cd53f8aeca65a20a2ec5e48e191bba44bbf",
   "datasetId": "pubs",
   "source": {
     "repository": "https://github.com/microsoft/sql-server-samples",
@@ -14,7 +19,7 @@
   "tables": [
     {
       "nativeName": "authors",
-      "collection": "authors_84094218",
+      "collection": "authors",
       "rows": 23,
       "primaryKey": [
         "au_id"
@@ -57,6 +62,8 @@
         {
           "nativeName": "au_id",
           "declaredType": "CHAR(11)",
+          "bigqueryName": "au_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -68,6 +75,8 @@
         {
           "nativeName": "au_lname",
           "declaredType": "VARCHAR(40)",
+          "bigqueryName": "au_lname",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -79,6 +88,8 @@
         {
           "nativeName": "au_fname",
           "declaredType": "VARCHAR(20)",
+          "bigqueryName": "au_fname",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -90,6 +101,8 @@
         {
           "nativeName": "phone",
           "declaredType": "CHAR(12)",
+          "bigqueryName": "phone",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -101,6 +114,8 @@
         {
           "nativeName": "address",
           "declaredType": "VARCHAR(40)",
+          "bigqueryName": "address",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -112,6 +127,8 @@
         {
           "nativeName": "city",
           "declaredType": "VARCHAR(20)",
+          "bigqueryName": "city",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -123,6 +140,8 @@
         {
           "nativeName": "state",
           "declaredType": "CHAR(2)",
+          "bigqueryName": "state",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -134,6 +153,8 @@
         {
           "nativeName": "zip",
           "declaredType": "CHAR(5)",
+          "bigqueryName": "zip",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -145,6 +166,8 @@
         {
           "nativeName": "contract",
           "declaredType": "INTEGER",
+          "bigqueryName": "contract",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -155,13 +178,27 @@
         }
       ],
       "records": {
-        "path": "authors_84094218/records.json",
-        "sha256": "694614676aefd7945f5be3089c6f3eb39c32253e976c065dd28c079aab9bb7cc"
+        "path": "authors/records.json",
+        "sha256": "e3525ebfee6b0ec0421d28b2299802704b91ce8d32269c55b50d35f9e1c8a25d"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/authors/records.json",
+          "sha256": "e3525ebfee6b0ec0421d28b2299802704b91ce8d32269c55b50d35f9e1c8a25d"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/authors/rows.ndjson",
+          "sha256": "45e6375daa2eee43fbc2f92d9d89befce1976b8bd4b78167b56a947495849d3a"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/authors/schema.json",
+          "sha256": "33def297f76d619e8b5fd6edafc5e5869f65c0fe67e1a6a24bc3375c98281586"
+        }
       }
     },
     {
       "nativeName": "discounts",
-      "collection": "discounts_fe83c08b",
+      "collection": "discounts",
       "rows": 3,
       "primaryKey": [],
       "transportId": "source-row-ordinal-not-native-key",
@@ -199,6 +236,8 @@
         {
           "nativeName": "discounttype",
           "declaredType": "VARCHAR(40)",
+          "bigqueryName": "discounttype",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -210,6 +249,8 @@
         {
           "nativeName": "stor_id",
           "declaredType": "CHAR(4)",
+          "bigqueryName": "stor_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -221,6 +262,8 @@
         {
           "nativeName": "lowqty",
           "declaredType": "INTEGER",
+          "bigqueryName": "lowqty",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -232,6 +275,8 @@
         {
           "nativeName": "highqty",
           "declaredType": "INTEGER",
+          "bigqueryName": "highqty",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -243,23 +288,39 @@
         {
           "nativeName": "discount",
           "declaredType": "DECIMAL(4,2)",
+          "bigqueryName": "discount",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
           "defaultValue": null,
-          "ingitdbType": "any",
+          "ingitdbType": "string",
           "exportRequired": true,
-          "encoding": "sqlite-typed-json"
+          "encoding": "decimal-string"
         }
       ],
       "records": {
-        "path": "discounts_fe83c08b/records.json",
-        "sha256": "a845e73e47a7c46259ee7aaf05faa3ee115e5a0b1a470f94cc7c547c8bfbc6ce"
+        "path": "discounts/records.json",
+        "sha256": "2d86510412030f1701ff3df6139efd36ea8e64a4a5971ab039c15f7e9849d0c6"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/discounts/records.json",
+          "sha256": "2d86510412030f1701ff3df6139efd36ea8e64a4a5971ab039c15f7e9849d0c6"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/discounts/rows.ndjson",
+          "sha256": "ad780a2d37fb38a95afb39630635e170830681cc99640446c562e95627a3712f"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/discounts/schema.json",
+          "sha256": "be360e5547a0ae8a119e9505a6777d8751b21d013221f3a21e734bc3503f6a9a"
+        }
       }
     },
     {
       "nativeName": "employee",
-      "collection": "employee_2fdc0177",
+      "collection": "employee",
       "rows": 43,
       "primaryKey": [
         "emp_id"
@@ -354,6 +415,8 @@
         {
           "nativeName": "emp_id",
           "declaredType": "CHAR(10)",
+          "bigqueryName": "emp_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -365,6 +428,8 @@
         {
           "nativeName": "fname",
           "declaredType": "VARCHAR(20)",
+          "bigqueryName": "fname",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -376,6 +441,8 @@
         {
           "nativeName": "minit",
           "declaredType": "CHAR(1)",
+          "bigqueryName": "minit",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -387,6 +454,8 @@
         {
           "nativeName": "lname",
           "declaredType": "VARCHAR(30)",
+          "bigqueryName": "lname",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -398,6 +467,8 @@
         {
           "nativeName": "job_id",
           "declaredType": "INTEGER",
+          "bigqueryName": "job_id",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -409,6 +480,8 @@
         {
           "nativeName": "job_lvl",
           "declaredType": "INTEGER",
+          "bigqueryName": "job_lvl",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -420,6 +493,8 @@
         {
           "nativeName": "pub_id",
           "declaredType": "CHAR(4)",
+          "bigqueryName": "pub_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -431,6 +506,8 @@
         {
           "nativeName": "hire_date",
           "declaredType": "TEXT",
+          "bigqueryName": "hire_date",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -441,13 +518,27 @@
         }
       ],
       "records": {
-        "path": "employee_2fdc0177/records.json",
-        "sha256": "9f431197de45641192518c8df8ba1debb7c70debdfbff61456c03f48ee758862"
+        "path": "employee/records.json",
+        "sha256": "0ae2c8044f2e803258ec5e21e374d02485585fc7561d03a5835091d437f5dd06"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/employee/records.json",
+          "sha256": "0ae2c8044f2e803258ec5e21e374d02485585fc7561d03a5835091d437f5dd06"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/employee/rows.ndjson",
+          "sha256": "3fb67f351f31a29103409127cbda092154da9405e8c809706d28c1af8c39e479"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/employee/schema.json",
+          "sha256": "550e66d91f38c1fe7a7bf7d8c15c71017190c490e8aec2e9bd0fe5f199a00c41"
+        }
       }
     },
     {
       "nativeName": "jobs",
-      "collection": "jobs_5d9a17cb",
+      "collection": "jobs",
       "rows": 14,
       "primaryKey": [
         "job_id"
@@ -461,6 +552,8 @@
         {
           "nativeName": "job_id",
           "declaredType": "INTEGER",
+          "bigqueryName": "job_id",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -472,6 +565,8 @@
         {
           "nativeName": "job_desc",
           "declaredType": "VARCHAR(50)",
+          "bigqueryName": "job_desc",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -483,6 +578,8 @@
         {
           "nativeName": "min_lvl",
           "declaredType": "INTEGER",
+          "bigqueryName": "min_lvl",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -494,6 +591,8 @@
         {
           "nativeName": "max_lvl",
           "declaredType": "INTEGER",
+          "bigqueryName": "max_lvl",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -504,13 +603,27 @@
         }
       ],
       "records": {
-        "path": "jobs_5d9a17cb/records.json",
-        "sha256": "386350f3f6f47f1b9b85bb24bfc557d96166df42b84d0554db8c92ef035353d3"
+        "path": "jobs/records.json",
+        "sha256": "bae382f271b6027a5880f724666727ce58116533e989cb0ee7f6199e0402a79a"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/jobs/records.json",
+          "sha256": "bae382f271b6027a5880f724666727ce58116533e989cb0ee7f6199e0402a79a"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/jobs/rows.ndjson",
+          "sha256": "1feffd5f44a56d836a46a129a66900e249dc74e87e318836451fecae3b1239d7"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/jobs/schema.json",
+          "sha256": "71776b78690bd972b7e4788d3f17e1474925d880591f6c50b8cabb6c2b0ffc0a"
+        }
       }
     },
     {
       "nativeName": "pub_info",
-      "collection": "pub_info_01ea152d",
+      "collection": "pub_info",
       "rows": 8,
       "primaryKey": [
         "pub_id"
@@ -564,6 +677,8 @@
         {
           "nativeName": "pub_id",
           "declaredType": "CHAR(4)",
+          "bigqueryName": "pub_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -575,6 +690,8 @@
         {
           "nativeName": "logo",
           "declaredType": "BLOB",
+          "bigqueryName": "logo",
+          "bigqueryType": "BYTES",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -586,6 +703,8 @@
         {
           "nativeName": "pr_info",
           "declaredType": "TEXT",
+          "bigqueryName": "pr_info",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -596,13 +715,27 @@
         }
       ],
       "records": {
-        "path": "pub_info_01ea152d/records.json",
-        "sha256": "879edd237db14e135c0437fc6de32e317a77f6527cadc523085f078dc1b15d34"
+        "path": "pub_info/records.json",
+        "sha256": "7905aa99d19961d5059fcf59c8b226aa5120e95e4f26e989c3b4917142b75d21"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/pub_info/records.json",
+          "sha256": "7905aa99d19961d5059fcf59c8b226aa5120e95e4f26e989c3b4917142b75d21"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/pub_info/rows.ndjson",
+          "sha256": "20a2ddef218a7b424443e1bf15cad000f41b83138b4d146557222d03c8fe8973"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/pub_info/schema.json",
+          "sha256": "a082744f90ad096b33f3d03cced4652c3e17ef3c305878ee78b12c0efbd83eeb"
+        }
       }
     },
     {
       "nativeName": "publishers",
-      "collection": "publishers_5cc69390",
+      "collection": "publishers",
       "rows": 8,
       "primaryKey": [
         "pub_id"
@@ -630,6 +763,8 @@
         {
           "nativeName": "pub_id",
           "declaredType": "CHAR(4)",
+          "bigqueryName": "pub_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -641,6 +776,8 @@
         {
           "nativeName": "pub_name",
           "declaredType": "VARCHAR(40)",
+          "bigqueryName": "pub_name",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -652,6 +789,8 @@
         {
           "nativeName": "city",
           "declaredType": "VARCHAR(20)",
+          "bigqueryName": "city",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -663,6 +802,8 @@
         {
           "nativeName": "state",
           "declaredType": "CHAR(2)",
+          "bigqueryName": "state",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -674,6 +815,8 @@
         {
           "nativeName": "country",
           "declaredType": "VARCHAR(30)",
+          "bigqueryName": "country",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -684,13 +827,27 @@
         }
       ],
       "records": {
-        "path": "publishers_5cc69390/records.json",
-        "sha256": "54a9e73ea3c9c5b5391a29aa91d908324855d2c7e6523409f3e332b85bf86c48"
+        "path": "publishers/records.json",
+        "sha256": "2a386a80e55d8b47a13fa7ecda7b59e2431f8a5c52f98c722c8a2f7fa0038e50"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/publishers/records.json",
+          "sha256": "2a386a80e55d8b47a13fa7ecda7b59e2431f8a5c52f98c722c8a2f7fa0038e50"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/publishers/rows.ndjson",
+          "sha256": "e670639557bd81497a3f251dde58db9cec6c1f0641938447d64de142ce2630ec"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/publishers/schema.json",
+          "sha256": "253032844d969206008f0e88faf1615e3186162a0fe7dfd9dcdab84c41450415"
+        }
       }
     },
     {
       "nativeName": "roysched",
-      "collection": "roysched_6423bcd8",
+      "collection": "roysched",
       "rows": 86,
       "primaryKey": [],
       "transportId": "source-row-ordinal-not-native-key",
@@ -742,6 +899,8 @@
         {
           "nativeName": "title_id",
           "declaredType": "CHAR(6)",
+          "bigqueryName": "title_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -753,6 +912,8 @@
         {
           "nativeName": "lorange",
           "declaredType": "INT",
+          "bigqueryName": "lorange",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -764,6 +925,8 @@
         {
           "nativeName": "hirange",
           "declaredType": "INT",
+          "bigqueryName": "hirange",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -775,6 +938,8 @@
         {
           "nativeName": "royalty",
           "declaredType": "INT",
+          "bigqueryName": "royalty",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -785,13 +950,27 @@
         }
       ],
       "records": {
-        "path": "roysched_6423bcd8/records.json",
+        "path": "roysched/records.json",
         "sha256": "7c4c4457265b642e43a1643adbd1a66a53f2ccc0c85ef76f1f323064172826b2"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/roysched/records.json",
+          "sha256": "7c4c4457265b642e43a1643adbd1a66a53f2ccc0c85ef76f1f323064172826b2"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/roysched/rows.ndjson",
+          "sha256": "3dad2cbc57b51377e19b91dbdfe4bcd52c1c30f76a18ddddcfbb1b2985065fc9"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/roysched/schema.json",
+          "sha256": "1c22a2427b37637f2db6d6431bf473c7817a72a682887ffaf1a1edc12f4b0f3e"
+        }
       }
     },
     {
       "nativeName": "sales",
-      "collection": "sales_e04eb290",
+      "collection": "sales",
       "rows": 21,
       "primaryKey": [
         "stor_id",
@@ -888,6 +1067,8 @@
         {
           "nativeName": "stor_id",
           "declaredType": "CHAR(4)",
+          "bigqueryName": "stor_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -899,6 +1080,8 @@
         {
           "nativeName": "ord_num",
           "declaredType": "VARCHAR(20)",
+          "bigqueryName": "ord_num",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 2,
           "sourceDeclaredNullable": false,
@@ -910,6 +1093,8 @@
         {
           "nativeName": "ord_date",
           "declaredType": "TEXT",
+          "bigqueryName": "ord_date",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -921,6 +1106,8 @@
         {
           "nativeName": "qty",
           "declaredType": "INTEGER",
+          "bigqueryName": "qty",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -932,6 +1119,8 @@
         {
           "nativeName": "payterms",
           "declaredType": "VARCHAR(12)",
+          "bigqueryName": "payterms",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -943,6 +1132,8 @@
         {
           "nativeName": "title_id",
           "declaredType": "CHAR(6)",
+          "bigqueryName": "title_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 3,
           "sourceDeclaredNullable": false,
@@ -953,13 +1144,27 @@
         }
       ],
       "records": {
-        "path": "sales_e04eb290/records.json",
-        "sha256": "7bb01889ad2f2417f50239ecee43a2477a57ee27ed0e0f9b657fb70e8a3b65ea"
+        "path": "sales/records.json",
+        "sha256": "20d14bbf3aa2c074b5edd719c24960e8a8f337194706dbd8b2254fb8867439f9"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/sales/records.json",
+          "sha256": "20d14bbf3aa2c074b5edd719c24960e8a8f337194706dbd8b2254fb8867439f9"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/sales/rows.ndjson",
+          "sha256": "04f7c27f8651f2e5eab78021399e84c11aeca09e7b2dc1a542cf37c4e1cbaa06"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/sales/schema.json",
+          "sha256": "5b1817d819e71b4a7a907777e372ce49312cf976a388abe69ad0710812e42718"
+        }
       }
     },
     {
       "nativeName": "stores",
-      "collection": "stores_4e7cf3cf",
+      "collection": "stores",
       "rows": 6,
       "primaryKey": [
         "stor_id"
@@ -987,6 +1192,8 @@
         {
           "nativeName": "stor_id",
           "declaredType": "CHAR(4)",
+          "bigqueryName": "stor_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -998,6 +1205,8 @@
         {
           "nativeName": "stor_name",
           "declaredType": "VARCHAR(40)",
+          "bigqueryName": "stor_name",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1009,6 +1218,8 @@
         {
           "nativeName": "stor_address",
           "declaredType": "VARCHAR(40)",
+          "bigqueryName": "stor_address",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1020,6 +1231,8 @@
         {
           "nativeName": "city",
           "declaredType": "VARCHAR(20)",
+          "bigqueryName": "city",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1031,6 +1244,8 @@
         {
           "nativeName": "state",
           "declaredType": "CHAR(2)",
+          "bigqueryName": "state",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1042,6 +1257,8 @@
         {
           "nativeName": "zip",
           "declaredType": "CHAR(5)",
+          "bigqueryName": "zip",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1052,13 +1269,27 @@
         }
       ],
       "records": {
-        "path": "stores_4e7cf3cf/records.json",
-        "sha256": "cbe09793f14eb62564fe920529fa16f2247f2d462f44859387bb750d8433493d"
+        "path": "stores/records.json",
+        "sha256": "5afc4a3dcda232c76c0ef1ff773e567e3d6a69f73779835344aaf6e726d03aa9"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/stores/records.json",
+          "sha256": "5afc4a3dcda232c76c0ef1ff773e567e3d6a69f73779835344aaf6e726d03aa9"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/stores/rows.ndjson",
+          "sha256": "5c09314f326f113ea13278fc3dd1b4904f73b30ac4ef30d40c91c9f183f44b5d"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/stores/schema.json",
+          "sha256": "cb7c8dabf137e71d2617c2b602b79e5f4348bb6884c7d5d7dcbe985c413df005"
+        }
       }
     },
     {
       "nativeName": "titleauthor",
-      "collection": "titleauthor_be0ba2ca",
+      "collection": "titleauthor",
       "rows": 25,
       "primaryKey": [
         "au_id",
@@ -1165,6 +1396,8 @@
         {
           "nativeName": "au_id",
           "declaredType": "CHAR(11)",
+          "bigqueryName": "au_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -1176,6 +1409,8 @@
         {
           "nativeName": "title_id",
           "declaredType": "CHAR(6)",
+          "bigqueryName": "title_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 2,
           "sourceDeclaredNullable": false,
@@ -1187,6 +1422,8 @@
         {
           "nativeName": "au_ord",
           "declaredType": "INTEGER",
+          "bigqueryName": "au_ord",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1198,6 +1435,8 @@
         {
           "nativeName": "royaltyper",
           "declaredType": "INT",
+          "bigqueryName": "royaltyper",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1208,13 +1447,27 @@
         }
       ],
       "records": {
-        "path": "titleauthor_be0ba2ca/records.json",
-        "sha256": "297c8dfcf982e4400bac86c88be02a6e7cbcc5101a3a78c095c5c0dc6ae38c1e"
+        "path": "titleauthor/records.json",
+        "sha256": "415a79b301831e6cd166b07615a91382b9687fd5da48f66c9b07dfd464c27085"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/titleauthor/records.json",
+          "sha256": "415a79b301831e6cd166b07615a91382b9687fd5da48f66c9b07dfd464c27085"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/titleauthor/rows.ndjson",
+          "sha256": "ed1ca9f96aeef5497ae6df6910ea6569a0bee35a321b1eb739307257b2393a99"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/titleauthor/schema.json",
+          "sha256": "ff9b57cec6c7c24b52e3a203692823b01ee9ca11d4601026eb97afff53ff2167"
+        }
       }
     },
     {
       "nativeName": "titles",
-      "collection": "titles_d9ad71b7",
+      "collection": "titles",
       "rows": 18,
       "primaryKey": [
         "title_id"
@@ -1281,6 +1534,8 @@
         {
           "nativeName": "title_id",
           "declaredType": "CHAR(6)",
+          "bigqueryName": "title_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -1292,6 +1547,8 @@
         {
           "nativeName": "title",
           "declaredType": "VARCHAR(80)",
+          "bigqueryName": "title",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -1303,6 +1560,8 @@
         {
           "nativeName": "type",
           "declaredType": "CHAR(12)",
+          "bigqueryName": "type",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -1314,6 +1573,8 @@
         {
           "nativeName": "pub_id",
           "declaredType": "CHAR(4)",
+          "bigqueryName": "pub_id",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1325,28 +1586,34 @@
         {
           "nativeName": "price",
           "declaredType": "NUMERIC",
+          "bigqueryName": "price",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
           "defaultValue": null,
-          "ingitdbType": "any",
+          "ingitdbType": "string",
           "exportRequired": false,
-          "encoding": "sqlite-typed-json"
+          "encoding": "decimal-string"
         },
         {
           "nativeName": "advance",
           "declaredType": "NUMERIC",
+          "bigqueryName": "advance",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
           "defaultValue": null,
-          "ingitdbType": "int",
+          "ingitdbType": "string",
           "exportRequired": false,
-          "encoding": "native-json"
+          "encoding": "decimal-string"
         },
         {
           "nativeName": "royalty",
           "declaredType": "INT",
+          "bigqueryName": "royalty",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1358,6 +1625,8 @@
         {
           "nativeName": "ytd_sales",
           "declaredType": "INT",
+          "bigqueryName": "ytd_sales",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1369,6 +1638,8 @@
         {
           "nativeName": "notes",
           "declaredType": "VARCHAR(200)",
+          "bigqueryName": "notes",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1380,6 +1651,8 @@
         {
           "nativeName": "pubdate",
           "declaredType": "TEXT",
+          "bigqueryName": "pubdate",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -1390,11 +1663,29 @@
         }
       ],
       "records": {
-        "path": "titles_d9ad71b7/records.json",
-        "sha256": "5253e61a2eff9786f2bc22649569fd2d082a2e6954c8257fb1f98589c1d7ce1a"
+        "path": "titles/records.json",
+        "sha256": "2a53df4c674c54b0de7362e7a353d3a7cf99f4f6fb66476955abf32b194929af"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/titles/records.json",
+          "sha256": "2a53df4c674c54b0de7362e7a353d3a7cf99f4f6fb66476955abf32b194929af"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/titles/rows.ndjson",
+          "sha256": "2364d560d6c3bd2d4bd0995251256dbf723d6e121d4d0265f0a56596c1b84de5"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/titles/schema.json",
+          "sha256": "ee2c7baa6076085d2cf246e81fe10355e1317466c163ec1e71c1be8c90f11c3e"
+        }
       }
     }
   ],
+  "sourceCollections": {
+    "path": "ingitdb/.ingitdb/source-collections.json",
+    "sha256": "58343c5aaec85827aa8364b1f461ea92e3e7ff592f0d967dad69550c3f2f09f1"
+  },
   "views": [
     {
       "name": "titleview",
@@ -1410,5 +1701,19 @@
       "sourceSql": "CREATE VIEW titleview AS select title, au_ord, au_lname, price, ytd_sales, pub_id from authors, titles, titleauthor where authors.au_id = titleauthor.au_id AND titles.title_id = titleauthor.title_id"
     }
   ],
-  "status": "prepared-not-hosted"
+  "status": "prepared-not-hosted",
+  "nativeParity": {
+    "format": "demodb-datatug-parity/v1",
+    "sourceSha256": "b45b08b7c06441cc0b138b031ea5bd32bd5866aebf874c89d2ebf7fc6abb3691",
+    "tables": 11,
+    "rows": 255,
+    "dataChecked": true,
+    "metadataAndDataMatch": true,
+    "sourceOrphans": 0,
+    "errorCount": 0,
+    "report": {
+      "path": "ingitdb/native-parity-report.json",
+      "sha256": "f8364bb6ccdc643d009b4672684b73ca6785f21585fe82eca050fa19801b820b"
+    }
+  }
 }

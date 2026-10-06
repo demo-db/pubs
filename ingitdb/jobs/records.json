@@ -1,0 +1,16 @@
+{
+  "pk-W1siaW50NjQiLDFdXQ": {"job_desc":"New Hire - Job not specified","job_id":1,"max_lvl":10,"min_lvl":10},
+  "pk-W1siaW50NjQiLDJdXQ": {"job_desc":"Chief Executive Officer","job_id":2,"max_lvl":250,"min_lvl":200},
+  "pk-W1siaW50NjQiLDNdXQ": {"job_desc":"Business Operations Manager","job_id":3,"max_lvl":225,"min_lvl":175},
+  "pk-W1siaW50NjQiLDRdXQ": {"job_desc":"Chief Financial Officier","job_id":4,"max_lvl":250,"min_lvl":175},
+  "pk-W1siaW50NjQiLDVdXQ": {"job_desc":"Publisher","job_id":5,"max_lvl":250,"min_lvl":150},
+  "pk-W1siaW50NjQiLDZdXQ": {"job_desc":"Managing Editor","job_id":6,"max_lvl":225,"min_lvl":140},
+  "pk-W1siaW50NjQiLDddXQ": {"job_desc":"Marketing Manager","job_id":7,"max_lvl":200,"min_lvl":120},
+  "pk-W1siaW50NjQiLDhdXQ": {"job_desc":"Public Relations Manager","job_id":8,"max_lvl":175,"min_lvl":100},
+  "pk-W1siaW50NjQiLDldXQ": {"job_desc":"Acquisitions Manager","job_id":9,"max_lvl":175,"min_lvl":75},
+  "pk-W1siaW50NjQiLDEwXV0": {"job_desc":"Productions Manager","job_id":10,"max_lvl":165,"min_lvl":75},
+  "pk-W1siaW50NjQiLDExXV0": {"job_desc":"Operations Manager","job_id":11,"max_lvl":150,"min_lvl":75},
+  "pk-W1siaW50NjQiLDEyXV0": {"job_desc":"Editor","job_id":12,"max_lvl":100,"min_lvl":25},
+  "pk-W1siaW50NjQiLDEzXV0": {"job_desc":"Sales Representative","job_id":13,"max_lvl":100,"min_lvl":25},
+  "pk-W1siaW50NjQiLDE0XV0": {"job_desc":"Designer","job_id":14,"max_lvl":100,"min_lvl":25}
+}

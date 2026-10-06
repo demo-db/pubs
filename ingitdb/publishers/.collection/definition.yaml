@@ -1,0 +1,45 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    pub_id:
+        type: string
+        required: true
+    pub_name:
+        type: string
+    city:
+        type: string
+    state:
+        type: string
+    country:
+        type: string
+columns_order:
+    - pub_id
+    - pub_name
+    - city
+    - state
+    - country
+primary_key:
+    - pub_id
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE \"publishers\" (pub_id CHAR(4) NOT NULL PRIMARY KEY CHECK (pub_id IN (''1389'', ''0736'', ''0877'', ''1622'', ''1756'') OR pub_id GLOB ''99[0-9][0-9]''), pub_name VARCHAR(40) NULL, city VARCHAR(20) NULL, state CHAR(2) NULL, country VARCHAR(30) NULL DEFAULT(''USA''))","columns":[{"name":"pub_id","declaredType":"CHAR(4)","notNull":true,"primaryKeyPosition":1},{"name":"pub_name","declaredType":"VARCHAR(40)","notNull":false},{"name":"city","declaredType":"VARCHAR(20)","notNull":false},{"name":"state","declaredType":"CHAR(2)","notNull":false},{"name":"country","declaredType":"VARCHAR(30)","notNull":false,"defaultSql":"''USA''"}],"indexes":[{"name":"sqlite_autoindex_publishers_1","unique":true,"origin":"pk","columns":[{"position":0,"name":"pub_id","key":true,"collation":"BINARY"},{"position":1,"key":false,"collation":"BINARY"}]}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: pub_id
+          type: string
+          nullable: false
+        - name: pub_name
+          type: string
+          nullable: true
+        - name: city
+          type: string
+          nullable: true
+        - name: state
+          type: string
+          nullable: true
+        - name: country
+          type: string
+          nullable: true

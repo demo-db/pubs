@@ -1,0 +1,67 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    au_id:
+        type: string
+        required: true
+    title_id:
+        type: string
+        required: true
+    au_ord:
+        type: int
+    royaltyper:
+        type: int
+columns_order:
+    - au_id
+    - title_id
+    - au_ord
+    - royaltyper
+primary_key:
+    - au_id
+    - title_id
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE \"titleauthor\" (au_id CHAR(11) NOT NULL REFERENCES authors(au_id), title_id CHAR(6) NOT NULL REFERENCES titles(title_id), au_ord INTEGER NULL, royaltyper INT NULL, PRIMARY KEY (au_id, title_id))","columns":[{"name":"au_id","declaredType":"CHAR(11)","notNull":true,"primaryKeyPosition":1},{"name":"title_id","declaredType":"CHAR(6)","notNull":true,"primaryKeyPosition":2},{"name":"au_ord","declaredType":"INTEGER","notNull":false},{"name":"royaltyper","declaredType":"INT","notNull":false}],"indexes":[{"name":"titleauthor_titleidind","unique":false,"origin":"c","createSql":"CREATE INDEX \"titleauthor_titleidind\" ON \"titleauthor\" (title_id)","columns":[{"position":0,"name":"title_id","key":true,"collation":"BINARY"},{"position":1,"key":false,"collation":"BINARY"}]},{"name":"titleauthor_auidind","unique":false,"origin":"c","createSql":"CREATE INDEX \"titleauthor_auidind\" ON \"titleauthor\" (au_id)","columns":[{"position":0,"name":"au_id","key":true,"collation":"BINARY"},{"position":1,"key":false,"collation":"BINARY"}]},{"name":"sqlite_autoindex_titleauthor_1","unique":true,"origin":"pk","columns":[{"position":0,"name":"au_id","key":true,"collation":"BINARY"},{"position":1,"name":"title_id","key":true,"collation":"BINARY"},{"position":2,"key":false,"collation":"BINARY"}]}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: au_id
+          type: string
+          nullable: false
+        - name: title_id
+          type: string
+          nullable: false
+        - name: au_ord
+          type: int
+          nullable: true
+        - name: royaltyper
+          type: int
+          nullable: true
+    indexes:
+        - name: titleauthor_titleidind
+          fields:
+            - title_id
+        - name: titleauthor_auidind
+          fields:
+            - au_id
+    foreign_keys:
+        - name: titleauthor_fk_0
+          fields:
+            - title_id
+          referenced_collection: titles
+          referenced_fields:
+            - title_id
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION
+        - name: titleauthor_fk_1
+          fields:
+            - au_id
+          referenced_collection: authors
+          referenced_fields:
+            - au_id
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION

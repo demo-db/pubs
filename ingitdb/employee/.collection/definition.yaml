@@ -1,0 +1,93 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    emp_id:
+        type: string
+        required: true
+    fname:
+        type: string
+        required: true
+    minit:
+        type: string
+    lname:
+        type: string
+        required: true
+    job_id:
+        type: int
+        required: true
+    job_lvl:
+        type: int
+    pub_id:
+        type: string
+        required: true
+    hire_date:
+        type: string
+        required: true
+columns_order:
+    - emp_id
+    - fname
+    - minit
+    - lname
+    - job_id
+    - job_lvl
+    - pub_id
+    - hire_date
+primary_key:
+    - emp_id
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE \"employee\" (emp_id CHAR(10) NOT NULL PRIMARY KEY CHECK ( emp_id GLOB ''[A-Z][A-Z][A-Z][1-9][0-9][0-9][0-9][0-9][FM]'' OR emp_id GLOB ''[A-Z]-[A-Z][1-9][0-9][0-9][0-9][0-9][FM]''), fname VARCHAR(20) NOT NULL, minit CHAR(1) NULL, lname VARCHAR(30) NOT NULL, job_id INTEGER NOT NULL DEFAULT 1 REFERENCES jobs(job_id), job_lvl INTEGER DEFAULT 10, pub_id CHAR(4) NOT NULL DEFAULT (''9952'') REFERENCES publishers(pub_id), hire_date TEXT NOT NULL DEFAULT (''2000-01-01''))","columns":[{"name":"emp_id","declaredType":"CHAR(10)","notNull":true,"primaryKeyPosition":1},{"name":"fname","declaredType":"VARCHAR(20)","notNull":true},{"name":"minit","declaredType":"CHAR(1)","notNull":false},{"name":"lname","declaredType":"VARCHAR(30)","notNull":true},{"name":"job_id","declaredType":"INTEGER","notNull":true,"defaultSql":"1"},{"name":"job_lvl","declaredType":"INTEGER","notNull":false,"defaultSql":"10"},{"name":"pub_id","declaredType":"CHAR(4)","notNull":true,"defaultSql":"''9952''"},{"name":"hire_date","declaredType":"TEXT","notNull":true,"defaultSql":"''2000-01-01''"}],"indexes":[{"name":"employee_employee_ind","unique":false,"origin":"c","createSql":"CREATE INDEX \"employee_employee_ind\" ON \"employee\" (lname, fname, minit)","columns":[{"position":0,"name":"lname","key":true,"collation":"BINARY"},{"position":1,"name":"fname","key":true,"collation":"BINARY"},{"position":2,"name":"minit","key":true,"collation":"BINARY"},{"position":3,"key":false,"collation":"BINARY"}]},{"name":"sqlite_autoindex_employee_1","unique":true,"origin":"pk","columns":[{"position":0,"name":"emp_id","key":true,"collation":"BINARY"},{"position":1,"key":false,"collation":"BINARY"}]}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: emp_id
+          type: string
+          nullable: false
+        - name: fname
+          type: string
+          nullable: false
+        - name: minit
+          type: string
+          nullable: true
+        - name: lname
+          type: string
+          nullable: false
+        - name: job_id
+          type: int
+          nullable: false
+        - name: job_lvl
+          type: int
+          nullable: true
+        - name: pub_id
+          type: string
+          nullable: false
+        - name: hire_date
+          type: string
+          nullable: false
+    indexes:
+        - name: employee_employee_ind
+          fields:
+            - lname
+            - fname
+            - minit
+    foreign_keys:
+        - name: employee_fk_0
+          fields:
+            - pub_id
+          referenced_collection: publishers
+          referenced_fields:
+            - pub_id
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION
+        - name: employee_fk_1
+          fields:
+            - job_id
+          referenced_collection: jobs
+          referenced_fields:
+            - job_id
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION

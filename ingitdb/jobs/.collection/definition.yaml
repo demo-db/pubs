@@ -1,0 +1,42 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    job_id:
+        type: int
+        required: true
+    job_desc:
+        type: string
+        required: true
+    min_lvl:
+        type: int
+        required: true
+    max_lvl:
+        type: int
+        required: true
+columns_order:
+    - job_id
+    - job_desc
+    - min_lvl
+    - max_lvl
+primary_key:
+    - job_id
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE \"jobs\" (job_id INTEGER NOT NULL PRIMARY KEY, job_desc VARCHAR(50) NOT NULL DEFAULT ''New Position - title not formalized yet'', min_lvl INTEGER NOT NULL CHECK (min_lvl \u003e= 10), max_lvl INTEGER NOT NULL CHECK (max_lvl \u003c= 250))","columns":[{"name":"job_id","declaredType":"INTEGER","notNull":true,"primaryKeyPosition":1},{"name":"job_desc","declaredType":"VARCHAR(50)","notNull":true,"defaultSql":"''New Position - title not formalized yet''"},{"name":"min_lvl","declaredType":"INTEGER","notNull":true},{"name":"max_lvl","declaredType":"INTEGER","notNull":true}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: job_id
+          type: int
+          nullable: false
+        - name: job_desc
+          type: string
+          nullable: false
+        - name: min_lvl
+          type: int
+          nullable: false
+        - name: max_lvl
+          type: int
+          nullable: false

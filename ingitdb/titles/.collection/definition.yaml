@@ -1,0 +1,96 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    title_id:
+        type: string
+        required: true
+    title:
+        type: string
+        required: true
+    type:
+        type: string
+        required: true
+    pub_id:
+        type: string
+    price:
+        type: string
+    advance:
+        type: string
+    royalty:
+        type: int
+    ytd_sales:
+        type: int
+    notes:
+        type: string
+    pubdate:
+        type: string
+        required: true
+columns_order:
+    - title_id
+    - title
+    - type
+    - pub_id
+    - price
+    - advance
+    - royalty
+    - ytd_sales
+    - notes
+    - pubdate
+primary_key:
+    - title_id
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE \"titles\" (title_id CHAR(6) NOT NULL PRIMARY KEY, title VARCHAR(80) NOT NULL, type CHAR(12) NOT NULL DEFAULT (''UNDECIDED''), pub_id CHAR(4) NULL REFERENCES publishers(pub_id), price NUMERIC NULL, advance NUMERIC NULL, royalty INT NULL, ytd_sales INT NULL, notes VARCHAR(200) NULL, pubdate TEXT NOT NULL DEFAULT (''2000-01-01''))","columns":[{"name":"title_id","declaredType":"CHAR(6)","notNull":true,"primaryKeyPosition":1},{"name":"title","declaredType":"VARCHAR(80)","notNull":true},{"name":"type","declaredType":"CHAR(12)","notNull":true,"defaultSql":"''UNDECIDED''"},{"name":"pub_id","declaredType":"CHAR(4)","notNull":false},{"name":"price","declaredType":"NUMERIC","notNull":false},{"name":"advance","declaredType":"NUMERIC","notNull":false},{"name":"royalty","declaredType":"INT","notNull":false},{"name":"ytd_sales","declaredType":"INT","notNull":false},{"name":"notes","declaredType":"VARCHAR(200)","notNull":false},{"name":"pubdate","declaredType":"TEXT","notNull":true,"defaultSql":"''2000-01-01''"}],"indexes":[{"name":"titles_titleind","unique":false,"origin":"c","createSql":"CREATE INDEX \"titles_titleind\" ON \"titles\" (title)","columns":[{"position":0,"name":"title","key":true,"collation":"BINARY"},{"position":1,"key":false,"collation":"BINARY"}]},{"name":"sqlite_autoindex_titles_1","unique":true,"origin":"pk","columns":[{"position":0,"name":"title_id","key":true,"collation":"BINARY"},{"position":1,"key":false,"collation":"BINARY"}]}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    storage_class_files:
+        - source-storage-0001.jsonl
+    fields:
+        - name: title_id
+          type: string
+          nullable: false
+        - name: title
+          type: string
+          nullable: false
+        - name: type
+          type: string
+          nullable: false
+        - name: pub_id
+          type: string
+          nullable: true
+        - name: price
+          type: decimal
+          nullable: true
+          encoding: decimal-string
+        - name: advance
+          type: decimal
+          nullable: true
+          encoding: decimal-string
+        - name: royalty
+          type: int
+          nullable: true
+        - name: ytd_sales
+          type: int
+          nullable: true
+        - name: notes
+          type: string
+          nullable: true
+        - name: pubdate
+          type: string
+          nullable: false
+    indexes:
+        - name: titles_titleind
+          fields:
+            - title
+    foreign_keys:
+        - name: titles_fk_0
+          fields:
+            - pub_id
+          referenced_collection: publishers
+          referenced_fields:
+            - pub_id
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION
