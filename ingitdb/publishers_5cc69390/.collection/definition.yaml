@@ -2,14 +2,16 @@ record_file:
   name: records.json
   format: json
   type: "map[$record_id]map[$field_name]any"
+primary_key: ["pub_id"]
 columns:
   "pub_id":
-    type: any
+    type: string
+    required: true
   "pub_name":
-    type: any
+    type: string
   "city":
-    type: any
+    type: string
   "state":
-    type: any
+    type: string
   "country":
-    type: any
+    type: string

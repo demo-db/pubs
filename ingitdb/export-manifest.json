@@ -20,51 +20,137 @@
         "au_id"
       ],
       "transportId": "encoded-native-primary-key",
+      "sourceSql": "CREATE TABLE \"authors\" (au_id CHAR(11) CHECK (au_id GLOB '[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]') NOT NULL PRIMARY KEY, au_lname VARCHAR(40) NOT NULL, au_fname VARCHAR(20) NOT NULL, phone CHAR(12) NOT NULL DEFAULT ('UNKNOWN'), address VARCHAR(40) NULL, city VARCHAR(20) NULL, state CHAR(2) NULL, zip CHAR(5) NULL CHECK (zip GLOB '[0-9][0-9][0-9][0-9][0-9]'), contract INTEGER NOT NULL)",
+      "indexes": [
+        {
+          "name": "authors_aunmind",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "sql": "CREATE INDEX \"authors_aunmind\" ON \"authors\" (au_lname, au_fname)",
+          "columns": [
+            "au_lname",
+            "au_fname"
+          ],
+          "key_columns": [
+            "au_lname",
+            "au_fname"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_authors_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "sql": null,
+          "columns": [
+            "au_id"
+          ],
+          "key_columns": [
+            "au_id"
+          ]
+        }
+      ],
       "foreignKeys": [],
+      "foreignKeyConstraints": [],
       "columns": [
         {
           "nativeName": "au_id",
           "declaredType": "CHAR(11)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 1,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "au_lname",
           "declaredType": "VARCHAR(40)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "au_fname",
           "declaredType": "VARCHAR(20)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "phone",
           "declaredType": "CHAR(12)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": "'UNKNOWN'",
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "address",
           "declaredType": "VARCHAR(40)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "city",
           "declaredType": "VARCHAR(20)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "state",
           "declaredType": "CHAR(2)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "zip",
           "declaredType": "CHAR(5)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "contract",
           "declaredType": "INTEGER",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": true,
           "encoding": "native-json"
         }
       ],
@@ -79,39 +165,90 @@
       "rows": 3,
       "primaryKey": [],
       "transportId": "source-row-ordinal-not-native-key",
+      "sourceSql": "CREATE TABLE \"discounts\" (discounttype VARCHAR(40) NOT NULL, stor_id CHAR(4) NULL REFERENCES stores(stor_id), lowqty INTEGER NULL, highqty INTEGER NULL, discount DECIMAL(4,2) NOT NULL)",
+      "indexes": [],
       "foreignKeys": [
         {
           "id": 0,
           "sequence": 0,
           "table": "stores",
           "from": "stor_id",
-          "to": "stor_id"
+          "to": "stor_id",
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE"
+        }
+      ],
+      "foreignKeyConstraints": [
+        {
+          "id": 0,
+          "localColumns": [
+            "stor_id"
+          ],
+          "referencedTable": "stores",
+          "referencedColumns": [
+            "stor_id"
+          ],
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE",
+          "enforced": false
         }
       ],
       "columns": [
         {
           "nativeName": "discounttype",
           "declaredType": "VARCHAR(40)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "stor_id",
           "declaredType": "CHAR(4)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "lowqty",
           "declaredType": "INTEGER",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "highqty",
           "declaredType": "INTEGER",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "discount",
           "declaredType": "DECIMAL(4,2)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "any",
+          "exportRequired": true,
           "encoding": "sqlite-typed-json"
         }
       ],
@@ -128,61 +265,178 @@
         "emp_id"
       ],
       "transportId": "encoded-native-primary-key",
+      "sourceSql": "CREATE TABLE \"employee\" (emp_id CHAR(10) NOT NULL PRIMARY KEY CHECK ( emp_id GLOB '[A-Z][A-Z][A-Z][1-9][0-9][0-9][0-9][0-9][FM]' OR emp_id GLOB '[A-Z]-[A-Z][1-9][0-9][0-9][0-9][0-9][FM]'), fname VARCHAR(20) NOT NULL, minit CHAR(1) NULL, lname VARCHAR(30) NOT NULL, job_id INTEGER NOT NULL DEFAULT 1 REFERENCES jobs(job_id), job_lvl INTEGER DEFAULT 10, pub_id CHAR(4) NOT NULL DEFAULT ('9952') REFERENCES publishers(pub_id), hire_date TEXT NOT NULL DEFAULT ('2000-01-01'))",
+      "indexes": [
+        {
+          "name": "employee_employee_ind",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "sql": "CREATE INDEX \"employee_employee_ind\" ON \"employee\" (lname, fname, minit)",
+          "columns": [
+            "lname",
+            "fname",
+            "minit"
+          ],
+          "key_columns": [
+            "lname",
+            "fname",
+            "minit"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_employee_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "sql": null,
+          "columns": [
+            "emp_id"
+          ],
+          "key_columns": [
+            "emp_id"
+          ]
+        }
+      ],
       "foreignKeys": [
         {
           "id": 0,
           "sequence": 0,
           "table": "publishers",
           "from": "pub_id",
-          "to": "pub_id"
+          "to": "pub_id",
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE"
         },
         {
           "id": 1,
           "sequence": 0,
           "table": "jobs",
           "from": "job_id",
-          "to": "job_id"
+          "to": "job_id",
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE"
+        }
+      ],
+      "foreignKeyConstraints": [
+        {
+          "id": 0,
+          "localColumns": [
+            "pub_id"
+          ],
+          "referencedTable": "publishers",
+          "referencedColumns": [
+            "pub_id"
+          ],
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE",
+          "enforced": false
+        },
+        {
+          "id": 1,
+          "localColumns": [
+            "job_id"
+          ],
+          "referencedTable": "jobs",
+          "referencedColumns": [
+            "job_id"
+          ],
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE",
+          "enforced": false
         }
       ],
       "columns": [
         {
           "nativeName": "emp_id",
           "declaredType": "CHAR(10)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 1,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "fname",
           "declaredType": "VARCHAR(20)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "minit",
           "declaredType": "CHAR(1)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "lname",
           "declaredType": "VARCHAR(30)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "job_id",
           "declaredType": "INTEGER",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": "1",
+          "ingitdbType": "int",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "job_lvl",
           "declaredType": "INTEGER",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": "10",
+          "ingitdbType": "int",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "pub_id",
           "declaredType": "CHAR(4)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": "'9952'",
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "hire_date",
           "declaredType": "TEXT",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": "'2000-01-01'",
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         }
       ],
@@ -199,26 +453,53 @@
         "job_id"
       ],
       "transportId": "encoded-native-primary-key",
+      "sourceSql": "CREATE TABLE \"jobs\" (job_id INTEGER NOT NULL PRIMARY KEY, job_desc VARCHAR(50) NOT NULL DEFAULT 'New Position - title not formalized yet', min_lvl INTEGER NOT NULL CHECK (min_lvl >= 10), max_lvl INTEGER NOT NULL CHECK (max_lvl <= 250))",
+      "indexes": [],
       "foreignKeys": [],
+      "foreignKeyConstraints": [],
       "columns": [
         {
           "nativeName": "job_id",
           "declaredType": "INTEGER",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 1,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "job_desc",
           "declaredType": "VARCHAR(50)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": "'New Position - title not formalized yet'",
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "min_lvl",
           "declaredType": "INTEGER",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "max_lvl",
           "declaredType": "INTEGER",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": true,
           "encoding": "native-json"
         }
       ],
@@ -235,29 +516,82 @@
         "pub_id"
       ],
       "transportId": "encoded-native-primary-key",
+      "sourceSql": "CREATE TABLE \"pub_info\" (pub_id CHAR(4) NOT NULL REFERENCES publishers(pub_id) PRIMARY KEY, logo BLOB NULL, pr_info TEXT NULL)",
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_pub_info_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "sql": null,
+          "columns": [
+            "pub_id"
+          ],
+          "key_columns": [
+            "pub_id"
+          ]
+        }
+      ],
       "foreignKeys": [
         {
           "id": 0,
           "sequence": 0,
           "table": "publishers",
           "from": "pub_id",
-          "to": "pub_id"
+          "to": "pub_id",
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE"
+        }
+      ],
+      "foreignKeyConstraints": [
+        {
+          "id": 0,
+          "localColumns": [
+            "pub_id"
+          ],
+          "referencedTable": "publishers",
+          "referencedColumns": [
+            "pub_id"
+          ],
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE",
+          "enforced": false
         }
       ],
       "columns": [
         {
           "nativeName": "pub_id",
           "declaredType": "CHAR(4)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 1,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "logo",
           "declaredType": "BLOB",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "base64"
         },
         {
           "nativeName": "pr_info",
           "declaredType": "TEXT",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         }
       ],
@@ -274,31 +608,78 @@
         "pub_id"
       ],
       "transportId": "encoded-native-primary-key",
+      "sourceSql": "CREATE TABLE \"publishers\" (pub_id CHAR(4) NOT NULL PRIMARY KEY CHECK (pub_id IN ('1389', '0736', '0877', '1622', '1756') OR pub_id GLOB '99[0-9][0-9]'), pub_name VARCHAR(40) NULL, city VARCHAR(20) NULL, state CHAR(2) NULL, country VARCHAR(30) NULL DEFAULT('USA'))",
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_publishers_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "sql": null,
+          "columns": [
+            "pub_id"
+          ],
+          "key_columns": [
+            "pub_id"
+          ]
+        }
+      ],
       "foreignKeys": [],
+      "foreignKeyConstraints": [],
       "columns": [
         {
           "nativeName": "pub_id",
           "declaredType": "CHAR(4)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 1,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "pub_name",
           "declaredType": "VARCHAR(40)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "city",
           "declaredType": "VARCHAR(20)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "state",
           "declaredType": "CHAR(2)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "country",
           "declaredType": "VARCHAR(30)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": "'USA'",
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         }
       ],
@@ -313,34 +694,93 @@
       "rows": 86,
       "primaryKey": [],
       "transportId": "source-row-ordinal-not-native-key",
+      "sourceSql": "CREATE TABLE \"roysched\" (title_id CHAR(6) REFERENCES titles(title_id), lorange INT NULL, hirange INT NULL, royalty INT NULL)",
+      "indexes": [
+        {
+          "name": "roysched_titleidind",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "sql": "CREATE INDEX \"roysched_titleidind\" ON \"roysched\" (title_id)",
+          "columns": [
+            "title_id"
+          ],
+          "key_columns": [
+            "title_id"
+          ]
+        }
+      ],
       "foreignKeys": [
         {
           "id": 0,
           "sequence": 0,
           "table": "titles",
           "from": "title_id",
-          "to": "title_id"
+          "to": "title_id",
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE"
+        }
+      ],
+      "foreignKeyConstraints": [
+        {
+          "id": 0,
+          "localColumns": [
+            "title_id"
+          ],
+          "referencedTable": "titles",
+          "referencedColumns": [
+            "title_id"
+          ],
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE",
+          "enforced": false
         }
       ],
       "columns": [
         {
           "nativeName": "title_id",
           "declaredType": "CHAR(6)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "lorange",
           "declaredType": "INT",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "hirange",
           "declaredType": "INT",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "royalty",
           "declaredType": "INT",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": false,
           "encoding": "native-json"
         }
       ],
@@ -359,51 +799,156 @@
         "title_id"
       ],
       "transportId": "encoded-native-primary-key",
+      "sourceSql": "CREATE TABLE \"sales\" (stor_id CHAR(4) NOT NULL REFERENCES stores(stor_id), ord_num VARCHAR(20) NOT NULL, ord_date TEXT NOT NULL, qty INTEGER NOT NULL, payterms VARCHAR(12) NOT NULL, title_id CHAR(6) NOT NULL REFERENCES titles(title_id), PRIMARY KEY (stor_id, ord_num, title_id))",
+      "indexes": [
+        {
+          "name": "sales_titleidind",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "sql": "CREATE INDEX \"sales_titleidind\" ON \"sales\" (title_id)",
+          "columns": [
+            "title_id"
+          ],
+          "key_columns": [
+            "title_id"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_sales_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "sql": null,
+          "columns": [
+            "stor_id",
+            "ord_num",
+            "title_id"
+          ],
+          "key_columns": [
+            "stor_id",
+            "ord_num",
+            "title_id"
+          ]
+        }
+      ],
       "foreignKeys": [
         {
           "id": 0,
           "sequence": 0,
           "table": "titles",
           "from": "title_id",
-          "to": "title_id"
+          "to": "title_id",
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE"
         },
         {
           "id": 1,
           "sequence": 0,
           "table": "stores",
           "from": "stor_id",
-          "to": "stor_id"
+          "to": "stor_id",
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE"
+        }
+      ],
+      "foreignKeyConstraints": [
+        {
+          "id": 0,
+          "localColumns": [
+            "title_id"
+          ],
+          "referencedTable": "titles",
+          "referencedColumns": [
+            "title_id"
+          ],
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE",
+          "enforced": false
+        },
+        {
+          "id": 1,
+          "localColumns": [
+            "stor_id"
+          ],
+          "referencedTable": "stores",
+          "referencedColumns": [
+            "stor_id"
+          ],
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE",
+          "enforced": false
         }
       ],
       "columns": [
         {
           "nativeName": "stor_id",
           "declaredType": "CHAR(4)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 1,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "ord_num",
           "declaredType": "VARCHAR(20)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 2,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "ord_date",
           "declaredType": "TEXT",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "qty",
           "declaredType": "INTEGER",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "payterms",
           "declaredType": "VARCHAR(12)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "title_id",
           "declaredType": "CHAR(6)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 3,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         }
       ],
@@ -420,36 +965,89 @@
         "stor_id"
       ],
       "transportId": "encoded-native-primary-key",
+      "sourceSql": "CREATE TABLE \"stores\" (stor_id CHAR(4) NOT NULL PRIMARY KEY, stor_name VARCHAR(40) NULL, stor_address VARCHAR(40) NULL, city VARCHAR(20) NULL, state CHAR(2) NULL, zip CHAR(5) NULL)",
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_stores_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "sql": null,
+          "columns": [
+            "stor_id"
+          ],
+          "key_columns": [
+            "stor_id"
+          ]
+        }
+      ],
       "foreignKeys": [],
+      "foreignKeyConstraints": [],
       "columns": [
         {
           "nativeName": "stor_id",
           "declaredType": "CHAR(4)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 1,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "stor_name",
           "declaredType": "VARCHAR(40)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "stor_address",
           "declaredType": "VARCHAR(40)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "city",
           "declaredType": "VARCHAR(20)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "state",
           "declaredType": "CHAR(2)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "zip",
           "declaredType": "CHAR(5)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         }
       ],
@@ -467,41 +1065,145 @@
         "title_id"
       ],
       "transportId": "encoded-native-primary-key",
+      "sourceSql": "CREATE TABLE \"titleauthor\" (au_id CHAR(11) NOT NULL REFERENCES authors(au_id), title_id CHAR(6) NOT NULL REFERENCES titles(title_id), au_ord INTEGER NULL, royaltyper INT NULL, PRIMARY KEY (au_id, title_id))",
+      "indexes": [
+        {
+          "name": "titleauthor_titleidind",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "sql": "CREATE INDEX \"titleauthor_titleidind\" ON \"titleauthor\" (title_id)",
+          "columns": [
+            "title_id"
+          ],
+          "key_columns": [
+            "title_id"
+          ]
+        },
+        {
+          "name": "titleauthor_auidind",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "sql": "CREATE INDEX \"titleauthor_auidind\" ON \"titleauthor\" (au_id)",
+          "columns": [
+            "au_id"
+          ],
+          "key_columns": [
+            "au_id"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_titleauthor_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "sql": null,
+          "columns": [
+            "au_id",
+            "title_id"
+          ],
+          "key_columns": [
+            "au_id",
+            "title_id"
+          ]
+        }
+      ],
       "foreignKeys": [
         {
           "id": 0,
           "sequence": 0,
           "table": "titles",
           "from": "title_id",
-          "to": "title_id"
+          "to": "title_id",
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE"
         },
         {
           "id": 1,
           "sequence": 0,
           "table": "authors",
           "from": "au_id",
-          "to": "au_id"
+          "to": "au_id",
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE"
+        }
+      ],
+      "foreignKeyConstraints": [
+        {
+          "id": 0,
+          "localColumns": [
+            "title_id"
+          ],
+          "referencedTable": "titles",
+          "referencedColumns": [
+            "title_id"
+          ],
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE",
+          "enforced": false
+        },
+        {
+          "id": 1,
+          "localColumns": [
+            "au_id"
+          ],
+          "referencedTable": "authors",
+          "referencedColumns": [
+            "au_id"
+          ],
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE",
+          "enforced": false
         }
       ],
       "columns": [
         {
           "nativeName": "au_id",
           "declaredType": "CHAR(11)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 1,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "title_id",
           "declaredType": "CHAR(6)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 2,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "au_ord",
           "declaredType": "INTEGER",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "royaltyper",
           "declaredType": "INT",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": false,
           "encoding": "native-json"
         }
       ],
@@ -518,64 +1220,172 @@
         "title_id"
       ],
       "transportId": "encoded-native-primary-key",
+      "sourceSql": "CREATE TABLE \"titles\" (title_id CHAR(6) NOT NULL PRIMARY KEY, title VARCHAR(80) NOT NULL, type CHAR(12) NOT NULL DEFAULT ('UNDECIDED'), pub_id CHAR(4) NULL REFERENCES publishers(pub_id), price NUMERIC NULL, advance NUMERIC NULL, royalty INT NULL, ytd_sales INT NULL, notes VARCHAR(200) NULL, pubdate TEXT NOT NULL DEFAULT ('2000-01-01'))",
+      "indexes": [
+        {
+          "name": "titles_titleind",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "sql": "CREATE INDEX \"titles_titleind\" ON \"titles\" (title)",
+          "columns": [
+            "title"
+          ],
+          "key_columns": [
+            "title"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_titles_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "sql": null,
+          "columns": [
+            "title_id"
+          ],
+          "key_columns": [
+            "title_id"
+          ]
+        }
+      ],
       "foreignKeys": [
         {
           "id": 0,
           "sequence": 0,
           "table": "publishers",
           "from": "pub_id",
-          "to": "pub_id"
+          "to": "pub_id",
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE"
+        }
+      ],
+      "foreignKeyConstraints": [
+        {
+          "id": 0,
+          "localColumns": [
+            "pub_id"
+          ],
+          "referencedTable": "publishers",
+          "referencedColumns": [
+            "pub_id"
+          ],
+          "onUpdate": "NO ACTION",
+          "onDelete": "NO ACTION",
+          "match": "NONE",
+          "enforced": false
         }
       ],
       "columns": [
         {
           "nativeName": "title_id",
           "declaredType": "CHAR(6)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 1,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "title",
           "declaredType": "VARCHAR(80)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "type",
           "declaredType": "CHAR(12)",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": "'UNDECIDED'",
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "pub_id",
           "declaredType": "CHAR(4)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "price",
           "declaredType": "NUMERIC",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "any",
+          "exportRequired": false,
           "encoding": "sqlite-typed-json"
         },
         {
           "nativeName": "advance",
           "declaredType": "NUMERIC",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "royalty",
           "declaredType": "INT",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "ytd_sales",
           "declaredType": "INT",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "int",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "notes",
           "declaredType": "VARCHAR(200)",
+          "sourceNotNull": false,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": true,
+          "defaultValue": null,
+          "ingitdbType": "string",
+          "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "pubdate",
           "declaredType": "TEXT",
+          "sourceNotNull": true,
+          "primaryKeyPosition": 0,
+          "sourceDeclaredNullable": false,
+          "defaultValue": "'2000-01-01'",
+          "ingitdbType": "string",
+          "exportRequired": true,
           "encoding": "native-json"
         }
       ],

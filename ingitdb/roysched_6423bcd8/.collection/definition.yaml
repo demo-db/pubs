@@ -4,10 +4,10 @@ record_file:
   type: "map[$record_id]map[$field_name]any"
 columns:
   "title_id":
-    type: any
+    type: string
   "lorange":
-    type: any
+    type: int
   "hirange":
-    type: any
+    type: int
   "royalty":
-    type: any
+    type: int

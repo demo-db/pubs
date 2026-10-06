@@ -4,12 +4,14 @@ record_file:
   type: "map[$record_id]map[$field_name]any"
 columns:
   "discounttype":
-    type: any
+    type: string
+    required: true
   "stor_id":
-    type: any
+    type: string
   "lowqty":
-    type: any
+    type: int
   "highqty":
-    type: any
+    type: int
   "discount":
     type: any
+    required: true
