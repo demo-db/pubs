@@ -1,0 +1,51 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    stor_id:
+        type: string
+        required: true
+    stor_name:
+        type: string
+    stor_address:
+        type: string
+    city:
+        type: string
+    state:
+        type: string
+    zip:
+        type: string
+columns_order:
+    - stor_id
+    - stor_name
+    - stor_address
+    - city
+    - state
+    - zip
+primary_key:
+    - stor_id
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE \"stores\" (stor_id CHAR(4) NOT NULL PRIMARY KEY, stor_name VARCHAR(40) NULL, stor_address VARCHAR(40) NULL, city VARCHAR(20) NULL, state CHAR(2) NULL, zip CHAR(5) NULL)","columns":[{"name":"stor_id","declaredType":"CHAR(4)","notNull":true,"primaryKeyPosition":1},{"name":"stor_name","declaredType":"VARCHAR(40)","notNull":false},{"name":"stor_address","declaredType":"VARCHAR(40)","notNull":false},{"name":"city","declaredType":"VARCHAR(20)","notNull":false},{"name":"state","declaredType":"CHAR(2)","notNull":false},{"name":"zip","declaredType":"CHAR(5)","notNull":false}],"indexes":[{"name":"sqlite_autoindex_stores_1","unique":true,"origin":"pk","columns":[{"position":0,"name":"stor_id","key":true,"collation":"BINARY"},{"position":1,"key":false,"collation":"BINARY"}]}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: stor_id
+          type: string
+          nullable: false
+        - name: stor_name
+          type: string
+          nullable: true
+        - name: stor_address
+          type: string
+          nullable: true
+        - name: city
+          type: string
+          nullable: true
+        - name: state
+          type: string
+          nullable: true
+        - name: zip
+          type: string
+          nullable: true

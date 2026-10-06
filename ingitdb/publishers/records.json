@@ -1,0 +1,10 @@
+{
+  "pk-W1sic3RyaW5nIiwiMDczNiJdXQ": {"city":"Boston","country":"USA","pub_id":"0736","pub_name":"New Moon Books","state":"MA"},
+  "pk-W1sic3RyaW5nIiwiMDg3NyJdXQ": {"city":"Washington","country":"USA","pub_id":"0877","pub_name":"Binnet \u0026 Hardley","state":"DC"},
+  "pk-W1sic3RyaW5nIiwiMTM4OSJdXQ": {"city":"Berkeley","country":"USA","pub_id":"1389","pub_name":"Algodata Infosystems","state":"CA"},
+  "pk-W1sic3RyaW5nIiwiMTYyMiJdXQ": {"city":"Chicago","country":"USA","pub_id":"1622","pub_name":"Five Lakes Publishing","state":"IL"},
+  "pk-W1sic3RyaW5nIiwiMTc1NiJdXQ": {"city":"Dallas","country":"USA","pub_id":"1756","pub_name":"Ramona Publishers","state":"TX"},
+  "pk-W1sic3RyaW5nIiwiOTkwMSJdXQ": {"city":"M�nchen","country":"Germany","pub_id":"9901","pub_name":"GGG\u0026G","state":null},
+  "pk-W1sic3RyaW5nIiwiOTk1MiJdXQ": {"city":"New York","country":"USA","pub_id":"9952","pub_name":"Scootney Books","state":"NY"},
+  "pk-W1sic3RyaW5nIiwiOTk5OSJdXQ": {"city":"Paris","country":"France","pub_id":"9999","pub_name":"Lucerne Publishing","state":null}
+}

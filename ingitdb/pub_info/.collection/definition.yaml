@@ -1,0 +1,44 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    pub_id:
+        type: string
+        required: true
+    logo:
+        type: string
+    pr_info:
+        type: string
+columns_order:
+    - pub_id
+    - logo
+    - pr_info
+primary_key:
+    - pub_id
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE \"pub_info\" (pub_id CHAR(4) NOT NULL REFERENCES publishers(pub_id) PRIMARY KEY, logo BLOB NULL, pr_info TEXT NULL)","columns":[{"name":"pub_id","declaredType":"CHAR(4)","notNull":true,"primaryKeyPosition":1},{"name":"logo","declaredType":"BLOB","notNull":false},{"name":"pr_info","declaredType":"TEXT","notNull":false}],"indexes":[{"name":"sqlite_autoindex_pub_info_1","unique":true,"origin":"pk","columns":[{"position":0,"name":"pub_id","key":true,"collation":"BINARY"},{"position":1,"key":false,"collation":"BINARY"}]}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: pub_id
+          type: string
+          nullable: false
+        - name: logo
+          type: bytes
+          nullable: true
+          encoding: base64
+        - name: pr_info
+          type: string
+          nullable: true
+    foreign_keys:
+        - name: pub_info_fk_0
+          fields:
+            - pub_id
+          referenced_collection: publishers
+          referenced_fields:
+            - pub_id
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION

@@ -1,0 +1,81 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    stor_id:
+        type: string
+        required: true
+    ord_num:
+        type: string
+        required: true
+    ord_date:
+        type: string
+        required: true
+    qty:
+        type: int
+        required: true
+    payterms:
+        type: string
+        required: true
+    title_id:
+        type: string
+        required: true
+columns_order:
+    - stor_id
+    - ord_num
+    - ord_date
+    - qty
+    - payterms
+    - title_id
+primary_key:
+    - stor_id
+    - ord_num
+    - title_id
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE \"sales\" (stor_id CHAR(4) NOT NULL REFERENCES stores(stor_id), ord_num VARCHAR(20) NOT NULL, ord_date TEXT NOT NULL, qty INTEGER NOT NULL, payterms VARCHAR(12) NOT NULL, title_id CHAR(6) NOT NULL REFERENCES titles(title_id), PRIMARY KEY (stor_id, ord_num, title_id))","columns":[{"name":"stor_id","declaredType":"CHAR(4)","notNull":true,"primaryKeyPosition":1},{"name":"ord_num","declaredType":"VARCHAR(20)","notNull":true,"primaryKeyPosition":2},{"name":"ord_date","declaredType":"TEXT","notNull":true},{"name":"qty","declaredType":"INTEGER","notNull":true},{"name":"payterms","declaredType":"VARCHAR(12)","notNull":true},{"name":"title_id","declaredType":"CHAR(6)","notNull":true,"primaryKeyPosition":3}],"indexes":[{"name":"sales_titleidind","unique":false,"origin":"c","createSql":"CREATE INDEX \"sales_titleidind\" ON \"sales\" (title_id)","columns":[{"position":0,"name":"title_id","key":true,"collation":"BINARY"},{"position":1,"key":false,"collation":"BINARY"}]},{"name":"sqlite_autoindex_sales_1","unique":true,"origin":"pk","columns":[{"position":0,"name":"stor_id","key":true,"collation":"BINARY"},{"position":1,"name":"ord_num","key":true,"collation":"BINARY"},{"position":2,"name":"title_id","key":true,"collation":"BINARY"},{"position":3,"key":false,"collation":"BINARY"}]}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: stor_id
+          type: string
+          nullable: false
+        - name: ord_num
+          type: string
+          nullable: false
+        - name: ord_date
+          type: string
+          nullable: false
+        - name: qty
+          type: int
+          nullable: false
+        - name: payterms
+          type: string
+          nullable: false
+        - name: title_id
+          type: string
+          nullable: false
+    indexes:
+        - name: sales_titleidind
+          fields:
+            - title_id
+    foreign_keys:
+        - name: sales_fk_0
+          fields:
+            - title_id
+          referenced_collection: titles
+          referenced_fields:
+            - title_id
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION
+        - name: sales_fk_1
+          fields:
+            - stor_id
+          referenced_collection: stores
+          referenced_fields:
+            - stor_id
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION
