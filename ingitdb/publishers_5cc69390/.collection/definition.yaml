@@ -1,0 +1,15 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "pub_id":
+    type: any
+  "pub_name":
+    type: any
+  "city":
+    type: any
+  "state":
+    type: any
+  "country":
+    type: any

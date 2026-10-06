@@ -1,0 +1,15 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "discounttype":
+    type: any
+  "stor_id":
+    type: any
+  "lowqty":
+    type: any
+  "highqty":
+    type: any
+  "discount":
+    type: any

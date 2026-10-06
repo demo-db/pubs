@@ -1,0 +1,23 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "au_id":
+    type: any
+  "au_lname":
+    type: any
+  "au_fname":
+    type: any
+  "phone":
+    type: any
+  "address":
+    type: any
+  "city":
+    type: any
+  "state":
+    type: any
+  "zip":
+    type: any
+  "contract":
+    type: any

@@ -1,0 +1,13 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "au_id":
+    type: any
+  "title_id":
+    type: any
+  "au_ord":
+    type: any
+  "royaltyper":
+    type: any

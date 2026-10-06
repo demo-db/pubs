@@ -1,0 +1,5 @@
+{
+  "row-000000000001": {"discount":{"sqliteType":"float","value":"10.5"},"discounttype":"Initial Customer","highqty":null,"lowqty":null,"stor_id":null},
+  "row-000000000002": {"discount":{"sqliteType":"float","value":"6.7"},"discounttype":"Volume Discount","highqty":1000,"lowqty":100,"stor_id":null},
+  "row-000000000003": {"discount":{"sqliteType":"int","value":"5"},"discounttype":"Customer Discount","highqty":null,"lowqty":null,"stor_id":"8042"}
+}
