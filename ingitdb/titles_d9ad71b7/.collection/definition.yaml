@@ -2,24 +2,29 @@ record_file:
   name: records.json
   format: json
   type: "map[$record_id]map[$field_name]any"
+primary_key: ["title_id"]
 columns:
   "title_id":
-    type: any
+    type: string
+    required: true
   "title":
-    type: any
+    type: string
+    required: true
   "type":
-    type: any
+    type: string
+    required: true
   "pub_id":
-    type: any
+    type: string
   "price":
     type: any
   "advance":
-    type: any
+    type: int
   "royalty":
-    type: any
+    type: int
   "ytd_sales":
-    type: any
+    type: int
   "notes":
-    type: any
+    type: string
   "pubdate":
-    type: any
+    type: string
+    required: true

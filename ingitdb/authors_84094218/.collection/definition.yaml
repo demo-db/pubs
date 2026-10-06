@@ -2,22 +2,28 @@ record_file:
   name: records.json
   format: json
   type: "map[$record_id]map[$field_name]any"
+primary_key: ["au_id"]
 columns:
   "au_id":
-    type: any
+    type: string
+    required: true
   "au_lname":
-    type: any
+    type: string
+    required: true
   "au_fname":
-    type: any
+    type: string
+    required: true
   "phone":
-    type: any
+    type: string
+    required: true
   "address":
-    type: any
+    type: string
   "city":
-    type: any
+    type: string
   "state":
-    type: any
+    type: string
   "zip":
-    type: any
+    type: string
   "contract":
-    type: any
+    type: int
+    required: true
