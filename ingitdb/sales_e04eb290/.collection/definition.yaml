@@ -1,0 +1,17 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "stor_id":
+    type: any
+  "ord_num":
+    type: any
+  "ord_date":
+    type: any
+  "qty":
+    type: any
+  "payterms":
+    type: any
+  "title_id":
+    type: any

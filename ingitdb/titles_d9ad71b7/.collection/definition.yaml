@@ -1,0 +1,25 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "title_id":
+    type: any
+  "title":
+    type: any
+  "type":
+    type: any
+  "pub_id":
+    type: any
+  "price":
+    type: any
+  "advance":
+    type: any
+  "royalty":
+    type: any
+  "ytd_sales":
+    type: any
+  "notes":
+    type: any
+  "pubdate":
+    type: any

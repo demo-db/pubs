@@ -1,0 +1,21 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "emp_id":
+    type: any
+  "fname":
+    type: any
+  "minit":
+    type: any
+  "lname":
+    type: any
+  "job_id":
+    type: any
+  "job_lvl":
+    type: any
+  "pub_id":
+    type: any
+  "hire_date":
+    type: any

@@ -1,0 +1,604 @@
+{
+  "format": "demodb-ingitdb-export/v1",
+  "datasetId": "pubs",
+  "source": {
+    "repository": "https://github.com/microsoft/sql-server-samples",
+    "revision": "beaab06ef72831089ca80e5355d65e661fd19b26",
+    "providerRepository": "https://github.com/demo-db/pubs",
+    "providerCommit": "6c06c5c7395b03ff1a02c2b1a21485add3e1b65b",
+    "providerContractSha256": "32224efdbecd57962f32a0aad81653bbf5085788df69185be30b2c7c0910d659",
+    "fixtureSha256": "b45b08b7c06441cc0b138b031ea5bd32bd5866aebf874c89d2ebf7fc6abb3691",
+    "fixtureBytes": 212992
+  },
+  "rowCount": 255,
+  "tables": [
+    {
+      "nativeName": "authors",
+      "collection": "authors_84094218",
+      "rows": 23,
+      "primaryKey": [
+        "au_id"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [],
+      "columns": [
+        {
+          "nativeName": "au_id",
+          "declaredType": "CHAR(11)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "au_lname",
+          "declaredType": "VARCHAR(40)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "au_fname",
+          "declaredType": "VARCHAR(20)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "phone",
+          "declaredType": "CHAR(12)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "address",
+          "declaredType": "VARCHAR(40)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "city",
+          "declaredType": "VARCHAR(20)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "state",
+          "declaredType": "CHAR(2)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "zip",
+          "declaredType": "CHAR(5)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "contract",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "authors_84094218/records.json",
+        "sha256": "694614676aefd7945f5be3089c6f3eb39c32253e976c065dd28c079aab9bb7cc"
+      }
+    },
+    {
+      "nativeName": "discounts",
+      "collection": "discounts_fe83c08b",
+      "rows": 3,
+      "primaryKey": [],
+      "transportId": "source-row-ordinal-not-native-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "stores",
+          "from": "stor_id",
+          "to": "stor_id"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "discounttype",
+          "declaredType": "VARCHAR(40)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "stor_id",
+          "declaredType": "CHAR(4)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "lowqty",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "highqty",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "discount",
+          "declaredType": "DECIMAL(4,2)",
+          "encoding": "sqlite-typed-json"
+        }
+      ],
+      "records": {
+        "path": "discounts_fe83c08b/records.json",
+        "sha256": "a845e73e47a7c46259ee7aaf05faa3ee115e5a0b1a470f94cc7c547c8bfbc6ce"
+      }
+    },
+    {
+      "nativeName": "employee",
+      "collection": "employee_2fdc0177",
+      "rows": 43,
+      "primaryKey": [
+        "emp_id"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "publishers",
+          "from": "pub_id",
+          "to": "pub_id"
+        },
+        {
+          "id": 1,
+          "sequence": 0,
+          "table": "jobs",
+          "from": "job_id",
+          "to": "job_id"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "emp_id",
+          "declaredType": "CHAR(10)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "fname",
+          "declaredType": "VARCHAR(20)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "minit",
+          "declaredType": "CHAR(1)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "lname",
+          "declaredType": "VARCHAR(30)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "job_id",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "job_lvl",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "pub_id",
+          "declaredType": "CHAR(4)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "hire_date",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "employee_2fdc0177/records.json",
+        "sha256": "9f431197de45641192518c8df8ba1debb7c70debdfbff61456c03f48ee758862"
+      }
+    },
+    {
+      "nativeName": "jobs",
+      "collection": "jobs_5d9a17cb",
+      "rows": 14,
+      "primaryKey": [
+        "job_id"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [],
+      "columns": [
+        {
+          "nativeName": "job_id",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "job_desc",
+          "declaredType": "VARCHAR(50)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "min_lvl",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "max_lvl",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "jobs_5d9a17cb/records.json",
+        "sha256": "386350f3f6f47f1b9b85bb24bfc557d96166df42b84d0554db8c92ef035353d3"
+      }
+    },
+    {
+      "nativeName": "pub_info",
+      "collection": "pub_info_01ea152d",
+      "rows": 8,
+      "primaryKey": [
+        "pub_id"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "publishers",
+          "from": "pub_id",
+          "to": "pub_id"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "pub_id",
+          "declaredType": "CHAR(4)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "logo",
+          "declaredType": "BLOB",
+          "encoding": "base64"
+        },
+        {
+          "nativeName": "pr_info",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "pub_info_01ea152d/records.json",
+        "sha256": "879edd237db14e135c0437fc6de32e317a77f6527cadc523085f078dc1b15d34"
+      }
+    },
+    {
+      "nativeName": "publishers",
+      "collection": "publishers_5cc69390",
+      "rows": 8,
+      "primaryKey": [
+        "pub_id"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [],
+      "columns": [
+        {
+          "nativeName": "pub_id",
+          "declaredType": "CHAR(4)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "pub_name",
+          "declaredType": "VARCHAR(40)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "city",
+          "declaredType": "VARCHAR(20)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "state",
+          "declaredType": "CHAR(2)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "country",
+          "declaredType": "VARCHAR(30)",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "publishers_5cc69390/records.json",
+        "sha256": "54a9e73ea3c9c5b5391a29aa91d908324855d2c7e6523409f3e332b85bf86c48"
+      }
+    },
+    {
+      "nativeName": "roysched",
+      "collection": "roysched_6423bcd8",
+      "rows": 86,
+      "primaryKey": [],
+      "transportId": "source-row-ordinal-not-native-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "titles",
+          "from": "title_id",
+          "to": "title_id"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "title_id",
+          "declaredType": "CHAR(6)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "lorange",
+          "declaredType": "INT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "hirange",
+          "declaredType": "INT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "royalty",
+          "declaredType": "INT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "roysched_6423bcd8/records.json",
+        "sha256": "7c4c4457265b642e43a1643adbd1a66a53f2ccc0c85ef76f1f323064172826b2"
+      }
+    },
+    {
+      "nativeName": "sales",
+      "collection": "sales_e04eb290",
+      "rows": 21,
+      "primaryKey": [
+        "stor_id",
+        "ord_num",
+        "title_id"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "titles",
+          "from": "title_id",
+          "to": "title_id"
+        },
+        {
+          "id": 1,
+          "sequence": 0,
+          "table": "stores",
+          "from": "stor_id",
+          "to": "stor_id"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "stor_id",
+          "declaredType": "CHAR(4)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ord_num",
+          "declaredType": "VARCHAR(20)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ord_date",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "qty",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "payterms",
+          "declaredType": "VARCHAR(12)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "title_id",
+          "declaredType": "CHAR(6)",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "sales_e04eb290/records.json",
+        "sha256": "7bb01889ad2f2417f50239ecee43a2477a57ee27ed0e0f9b657fb70e8a3b65ea"
+      }
+    },
+    {
+      "nativeName": "stores",
+      "collection": "stores_4e7cf3cf",
+      "rows": 6,
+      "primaryKey": [
+        "stor_id"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [],
+      "columns": [
+        {
+          "nativeName": "stor_id",
+          "declaredType": "CHAR(4)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "stor_name",
+          "declaredType": "VARCHAR(40)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "stor_address",
+          "declaredType": "VARCHAR(40)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "city",
+          "declaredType": "VARCHAR(20)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "state",
+          "declaredType": "CHAR(2)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "zip",
+          "declaredType": "CHAR(5)",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "stores_4e7cf3cf/records.json",
+        "sha256": "cbe09793f14eb62564fe920529fa16f2247f2d462f44859387bb750d8433493d"
+      }
+    },
+    {
+      "nativeName": "titleauthor",
+      "collection": "titleauthor_be0ba2ca",
+      "rows": 25,
+      "primaryKey": [
+        "au_id",
+        "title_id"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "titles",
+          "from": "title_id",
+          "to": "title_id"
+        },
+        {
+          "id": 1,
+          "sequence": 0,
+          "table": "authors",
+          "from": "au_id",
+          "to": "au_id"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "au_id",
+          "declaredType": "CHAR(11)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "title_id",
+          "declaredType": "CHAR(6)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "au_ord",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "royaltyper",
+          "declaredType": "INT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "titleauthor_be0ba2ca/records.json",
+        "sha256": "297c8dfcf982e4400bac86c88be02a6e7cbcc5101a3a78c095c5c0dc6ae38c1e"
+      }
+    },
+    {
+      "nativeName": "titles",
+      "collection": "titles_d9ad71b7",
+      "rows": 18,
+      "primaryKey": [
+        "title_id"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "publishers",
+          "from": "pub_id",
+          "to": "pub_id"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "title_id",
+          "declaredType": "CHAR(6)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "title",
+          "declaredType": "VARCHAR(80)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "type",
+          "declaredType": "CHAR(12)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "pub_id",
+          "declaredType": "CHAR(4)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "price",
+          "declaredType": "NUMERIC",
+          "encoding": "sqlite-typed-json"
+        },
+        {
+          "nativeName": "advance",
+          "declaredType": "NUMERIC",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "royalty",
+          "declaredType": "INT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ytd_sales",
+          "declaredType": "INT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "notes",
+          "declaredType": "VARCHAR(200)",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "pubdate",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "titles_d9ad71b7/records.json",
+        "sha256": "5253e61a2eff9786f2bc22649569fd2d082a2e6954c8257fb1f98589c1d7ce1a"
+      }
+    }
+  ],
+  "views": [
+    {
+      "name": "titleview",
+      "status": "source-definition-only",
+      "columns": [
+        "title",
+        "au_ord",
+        "au_lname",
+        "price",
+        "ytd_sales",
+        "pub_id"
+      ],
+      "sourceSql": "CREATE VIEW titleview AS select title, au_ord, au_lname, price, ytd_sales, pub_id from authors, titles, titleauthor where authors.au_id = titleauthor.au_id AND titles.title_id = titleauthor.title_id"
+    }
+  ],
+  "status": "prepared-not-hosted"
+}
