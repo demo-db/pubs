@@ -24,7 +24,7 @@ The smallest required SQL Server adaptations are documented here:
 
 The seed contains 23 authors, 8 publishers, 18 titles, 25 title-author links, 6 stores, 21 sales rows, 86 royalty-schedule rows, 3 discounts, 14 jobs, 8 publisher records, and 43 employees. The `titleview` returns 25 rows. No sample rows are invented or dropped.
 
-The source has no primary key or unique index on `discounts` or `roysched`; the converter checks those physical constraints and their ModelSpec entities omit `key`. The public schema records an empty primary-key list for these tables. The current descriptor format does not yet include a unique-key inventory, so an omitted unique-key field is not used to infer uniqueness.
+The source has no primary key or unique index on `discounts` or `roysched`; the converter checks those physical constraints and their ModelSpec record types omit `key`. The public schema records an empty primary-key list for these tables. The current descriptor format does not yet include a unique-key inventory, so an omitted unique-key field is not used to infer uniqueness.
 
 ## Generated contract
 

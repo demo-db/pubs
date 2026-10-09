@@ -13,6 +13,7 @@
     "serverDbBaseUrl": { "$ref": "#/$defs/httpsUrl" },
     "title": { "type": "string", "minLength": 1 },
     "description": { "type": "string", "minLength": 1 },
+    "tags": { "type": "array", "maxItems": 16, "uniqueItems": true, "items": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" } },
     "homepage": { "$ref": "#/$defs/httpsUrl" },
     "apiUrl": { "$ref": "#/$defs/httpsUrl" },
     "capabilities": {
@@ -86,7 +87,16 @@
                 "nullable": { "type": "boolean" },
                 "primaryKey": { "type": "boolean" },
                 "primaryKeyPosition": { "type": ["integer", "null"], "minimum": 1 },
-                "defaultValue": { "type": ["string", "number", "null"] }
+                "defaultValue": { "type": ["string", "number", "null"] },
+                "decimal": {
+                  "type": "object", "additionalProperties": false,
+                  "required": ["precision", "scale", "storage"],
+                  "properties": {
+                    "precision": { "type": "integer", "minimum": 1, "maximum": 1000 },
+                    "scale": { "type": "integer", "minimum": 0, "maximum": 1000 },
+                    "storage": { "const": "text" }
+                  }
+                }
               }
             }
           },

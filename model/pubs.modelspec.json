@@ -1,16 +1,16 @@
 {
-  "modelspec": "1.0-draft",
+  "modelspec": "1.0-draft-2",
   "module": {
     "id": "github.com/demo-db/pubs/pubs",
     "name": "pubs",
     "version": "0.1.0"
   },
-  "entities": {
+  "records": {
     "authors": {
       "key": [
         "au_id"
       ],
-      "properties": {
+      "fields": {
         "au_id": {
           "required": true,
           "type": "string"
@@ -46,13 +46,13 @@
       }
     },
     "discounts": {
-      "properties": {
+      "fields": {
         "discounttype": {
           "required": true,
           "type": "string"
         },
         "stor_id": {
-          "entity": "stores"
+          "record": "stores"
         },
         "lowqty": {
           "type": "int"
@@ -70,7 +70,7 @@
       "key": [
         "emp_id"
       ],
-      "properties": {
+      "fields": {
         "emp_id": {
           "required": true,
           "type": "string"
@@ -88,14 +88,14 @@
         },
         "job_id": {
           "required": true,
-          "entity": "jobs"
+          "record": "jobs"
         },
         "job_lvl": {
           "type": "int"
         },
         "pub_id": {
           "required": true,
-          "entity": "publishers"
+          "record": "publishers"
         },
         "hire_date": {
           "required": true,
@@ -107,7 +107,7 @@
       "key": [
         "job_id"
       ],
-      "properties": {
+      "fields": {
         "job_id": {
           "required": true,
           "type": "int"
@@ -130,10 +130,10 @@
       "key": [
         "pub_id"
       ],
-      "properties": {
+      "fields": {
         "pub_id": {
           "required": true,
-          "entity": "publishers"
+          "record": "publishers"
         },
         "logo": {
           "type": "document"
@@ -147,7 +147,7 @@
       "key": [
         "pub_id"
       ],
-      "properties": {
+      "fields": {
         "pub_id": {
           "required": true,
           "type": "string"
@@ -167,9 +167,9 @@
       }
     },
     "roysched": {
-      "properties": {
+      "fields": {
         "title_id": {
-          "entity": "titles"
+          "record": "titles"
         },
         "lorange": {
           "type": "int"
@@ -188,10 +188,10 @@
         "ord_num",
         "title_id"
       ],
-      "properties": {
+      "fields": {
         "stor_id": {
           "required": true,
-          "entity": "stores"
+          "record": "stores"
         },
         "ord_num": {
           "required": true,
@@ -211,7 +211,7 @@
         },
         "title_id": {
           "required": true,
-          "entity": "titles"
+          "record": "titles"
         }
       }
     },
@@ -219,7 +219,7 @@
       "key": [
         "stor_id"
       ],
-      "properties": {
+      "fields": {
         "stor_id": {
           "required": true,
           "type": "string"
@@ -246,14 +246,14 @@
         "au_id",
         "title_id"
       ],
-      "properties": {
+      "fields": {
         "au_id": {
           "required": true,
-          "entity": "authors"
+          "record": "authors"
         },
         "title_id": {
           "required": true,
-          "entity": "titles"
+          "record": "titles"
         },
         "au_ord": {
           "type": "int"
@@ -267,7 +267,7 @@
       "key": [
         "title_id"
       ],
-      "properties": {
+      "fields": {
         "title_id": {
           "required": true,
           "type": "string"
@@ -281,7 +281,7 @@
           "type": "string"
         },
         "pub_id": {
-          "entity": "publishers"
+          "record": "publishers"
         },
         "price": {
           "type": "decimal"
