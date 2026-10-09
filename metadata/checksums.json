@@ -114,12 +114,12 @@
       "bytes": 4573
     },
     "model/pubs.modelspec.hcl": {
-      "sha256": "b5eec88b774d36189fa4e806bd8b81f5a6162193a2cfac104b4b139215e155fa",
-      "bytes": 4265
+      "sha256": "d28b558c0c6ef58ca17669d55ee937f5398cfba09947026fe5adad65107d9045",
+      "bytes": 4073
     },
     "model/pubs.modelspec.json": {
-      "sha256": "6f7ca172d746866f2cf3ee84be0fb1ae9bd6c90f6144a0e35f24eec7af11f3ea",
-      "bytes": 5807
+      "sha256": "dbd25e00002e0b683656a1bd4a8f38becaf376da01cab268f5e8c13bb137f0c8",
+      "bytes": 5764
     },
     "ovdb-database.json": {
       "sha256": "42a9ec5d9179b64a3d848fc661a8a1b230d691643ecf71ca42fc2fa1830533c1",
@@ -130,8 +130,8 @@
       "bytes": 1220
     },
     "schemas/ovdb-database-draft-1.schema.json": {
-      "sha256": "2424ef00acd462ab5a8abc546fe2d1fffbbb5397e312332aedc77b3e73109488",
-      "bytes": 5371
+      "sha256": "4af5dc5f48bce1bc2ba5cb6664dd2c28adcadd818c74da0e78fe428f6f6ec55b",
+      "bytes": 6001
     }
   }
 }
