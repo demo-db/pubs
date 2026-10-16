@@ -1,0 +1,90 @@
+{
+  "dataset": "pubs",
+  "dialect": "mysql",
+  "format": "demodb-dialect-report/v1",
+  "generator": "v0.100.0",
+  "tables": [
+    {
+      "columns": 9,
+      "name": "authors",
+      "rows": 23
+    },
+    {
+      "columns": 5,
+      "name": "publishers",
+      "rows": 8
+    },
+    {
+      "columns": 10,
+      "name": "titles",
+      "rows": 18
+    },
+    {
+      "columns": 4,
+      "name": "titleauthor",
+      "rows": 25
+    },
+    {
+      "columns": 6,
+      "name": "stores",
+      "rows": 6
+    },
+    {
+      "columns": 6,
+      "name": "sales",
+      "rows": 21
+    },
+    {
+      "columns": 4,
+      "name": "roysched",
+      "rows": 86
+    },
+    {
+      "columns": 5,
+      "name": "discounts",
+      "rows": 3
+    },
+    {
+      "columns": 4,
+      "name": "jobs",
+      "rows": 14
+    },
+    {
+      "columns": 3,
+      "name": "pub_info",
+      "rows": 8
+    },
+    {
+      "columns": 8,
+      "name": "employee",
+      "rows": 43
+    }
+  ],
+  "totals": {
+    "checkConstraints": 6,
+    "columns": 64,
+    "foreignKeys": 10,
+    "indexes": 7,
+    "primaryKeys": 9,
+    "rows": 255,
+    "tables": 11,
+    "uniqueConstraints": 0
+  },
+  "warnings": [
+    {
+      "kind": "values-normalized",
+      "message": "2 REAL and 1 INTEGER value(s) share one DECIMAL(4,2) column: SQLite keeps them apart (5 and 5.0), DECIMAL(4,2) does not; each REAL is written as the exact decimal of its shortest spelling, for example 10.5",
+      "object": "discounts.discount"
+    },
+    {
+      "kind": "values-normalized",
+      "message": "14 REAL and 2 INTEGER value(s) share one DECIMAL(4,2) column: SQLite keeps them apart (5 and 5.0), DECIMAL(4,2) does not; each REAL is written as the exact decimal of its shortest spelling, for example 19.99",
+      "object": "titles.price"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "titleview"
+    }
+  ]
+}

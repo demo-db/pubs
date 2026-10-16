@@ -1,0 +1,58 @@
+{
+  "attribution": "Pubs sample database, Copyright (c) Microsoft Corporation, MIT licence, https://github.com/microsoft/sql-server-samples at revision beaab06ef72831089ca80e5355d65e661fd19b26",
+  "format": "demodb-dialect-scripts/v1",
+  "id": "pubs",
+  "scripts": {
+    "mysql": {
+      "inputs": {
+        "attribution": "Pubs sample database, Copyright (c) Microsoft Corporation, MIT licence, https://github.com/microsoft/sql-server-samples at revision beaab06ef72831089ca80e5355d65e661fd19b26",
+        "dialect": "mysql",
+        "edition": "DemoDB contract edition, identical to the SQLite/CSV/JSON",
+        "generator": {
+          "checksumsSha256": "19d91f8ded312b945095bc14e5bda6fad667f0913580c3d0903c582300a4d8db",
+          "tag": "v0.100.0"
+        },
+        "license": "MIT",
+        "name": "pubs",
+        "noticeSha256": "dd3fa4de551514d2a1a1cad78c93ed40cf4c624e7dcf0c20fbb5e57dd1a96793",
+        "sqliteSha256": "b45b08b7c06441cc0b138b031ea5bd32bd5866aebf874c89d2ebf7fc6abb3691"
+      },
+      "inputsSha256": "907f1b100f8af5f4ae9c6e88d65016103a39f38b2e80e1efef0a17bac46c01b2",
+      "report": {
+        "bytes": 1972,
+        "path": "dialect-scripts/pubs.mysql.report.json",
+        "sha256": "b1a8ea14174f5029c7070cf866aaf7bddffe48db895dfc98e492cc71658a86d1",
+        "warnings": {
+          "values-normalized": 2,
+          "view-not-carried": 1
+        }
+      },
+      "stored": {
+        "decodedBytes": 206217,
+        "decodedSha256": "a56d1ce7eaf2dd2f5e5ef77f4a7e18700097e7072964ba7263167c465dc2a686",
+        "files": [
+          {
+            "bytes": 206217,
+            "path": "dialect-scripts/pubs.mysql.sql",
+            "sha256": "a56d1ce7eaf2dd2f5e5ef77f4a7e18700097e7072964ba7263167c465dc2a686"
+          }
+        ],
+        "mode": "plain"
+      },
+      "verification": {
+        "date": "2026-10-16",
+        "differences": 0,
+        "engine": "MySQL 8.4.11 (official mysql:8.4 image)",
+        "image": "mysql:8.4@sha256:24989179f58856db763f418010c1169fecc944e3ec1ea7e921572d83eb070f70",
+        "loadedWith": "--default-character-set=utf8mb4 --skip-commands --skip-system-command, stop at first error",
+        "rows": 255,
+        "scriptSha256": "a56d1ce7eaf2dd2f5e5ef77f4a7e18700097e7072964ba7263167c465dc2a686",
+        "secondLoadRefusedAtMarkerTable": true,
+        "tables": 11,
+        "valuesCompared": 1472,
+        "verifier": "datatug-cli internal/crossverify TestJourneyMySQL at v0.100.0, run locally over this exact script, loaded with the header's client flags and again with the plain client; reads source and target through Go drivers",
+        "verifierWarnings": 3
+      }
+    }
+  }
+}
