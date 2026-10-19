@@ -3,25 +3,92 @@
   "format": "demodb-dialect-scripts/v1",
   "id": "pubs",
   "scripts": {
-    "mysql": {
+    "mssql": {
       "inputs": {
         "attribution": "Pubs sample database, Copyright (c) Microsoft Corporation, MIT licence, https://github.com/microsoft/sql-server-samples at revision beaab06ef72831089ca80e5355d65e661fd19b26",
-        "dialect": "mysql",
+        "dialect": "mssql",
         "edition": "DemoDB contract edition, identical to the SQLite/CSV/JSON",
         "generator": {
-          "checksumsSha256": "19d91f8ded312b945095bc14e5bda6fad667f0913580c3d0903c582300a4d8db",
-          "tag": "v0.100.0"
+          "checksumsSha256": "32c36126ec6c8961a7b493c21f18b63ecb0146faff84089d89566a659fd975fd",
+          "tag": "v0.103.4"
         },
         "license": "MIT",
         "name": "pubs",
         "noticeSha256": "dd3fa4de551514d2a1a1cad78c93ed40cf4c624e7dcf0c20fbb5e57dd1a96793",
         "sqliteSha256": "b45b08b7c06441cc0b138b031ea5bd32bd5866aebf874c89d2ebf7fc6abb3691"
       },
-      "inputsSha256": "907f1b100f8af5f4ae9c6e88d65016103a39f38b2e80e1efef0a17bac46c01b2",
+      "inputsSha256": "36f868500dfbaa99f83c77050db62b19310657111a67f1819e7177a641a6d2c6",
+      "report": {
+        "bytes": 1972,
+        "path": "dialect-scripts/pubs.mssql.report.json",
+        "sha256": "ad166bb929928a49b68f078139c144a216162487b5922ffc7fdb48fa8d39e67c",
+        "warnings": {
+          "values-normalized": 2,
+          "view-not-carried": 1
+        }
+      },
+      "stored": {
+        "decodedBytes": 372702,
+        "decodedSha256": "85708725ca9b504ba09cb566c814231a2158a6aab0e0e71593d75f15ac2d2b8d",
+        "files": [
+          {
+            "bytes": 372702,
+            "path": "dialect-scripts/pubs.sqlserver.sql",
+            "sha256": "85708725ca9b504ba09cb566c814231a2158a6aab0e0e71593d75f15ac2d2b8d"
+          }
+        ],
+        "mode": "plain"
+      },
+      "verification": {
+        "clientVersion": "Version 18.7.0001.1 Linux",
+        "date": "2026-10-19",
+        "differences": 0,
+        "engine": "Microsoft SQL Server 2022 (RTM-CU27-GDR) (KB5126934) - 16.0.4305.5 (X64) / collation SQL_Latin1_General_CP1_CI_AS",
+        "image": "mcr.microsoft.com/mssql/server:2022-latest@sha256:cf8f0ab2ebe61feec2eed2629061a07d247f791c2a8ddda74a4ac9f06a291718",
+        "loadSeconds": 0.4,
+        "loadedWith": "-X -x -b -f 65001 -i, stop at first error",
+        "rows": 255,
+        "scriptSha256": "85708725ca9b504ba09cb566c814231a2158a6aab0e0e71593d75f15ac2d2b8d",
+        "secondLoadRefusedAtMarkerTable": true,
+        "tableRows": {
+          "authors": 23,
+          "discounts": 3,
+          "employee": 43,
+          "jobs": 14,
+          "pub_info": 8,
+          "publishers": 8,
+          "roysched": 86,
+          "sales": 21,
+          "stores": 6,
+          "titleauthor": 25,
+          "titles": 18
+        },
+        "tables": 11,
+        "valuesCompared": 1472,
+        "verifier": "datatug-cli internal/crossverify TestJourneyMSSQL at v0.103.4, run locally over this exact script, loaded with sqlcmd -X -x -b -f 65001 -i from the file inside the server container; reads source and target through Go drivers",
+        "verifierSeconds": 0.9,
+        "verifierWarnings": 3
+      }
+    },
+    "mysql": {
+      "inputs": {
+        "attribution": "Pubs sample database, Copyright (c) Microsoft Corporation, MIT licence, https://github.com/microsoft/sql-server-samples at revision beaab06ef72831089ca80e5355d65e661fd19b26",
+        "dialect": "mysql",
+        "edition": "DemoDB contract edition, identical to the SQLite/CSV/JSON",
+        "generator": {
+          "checksumsSha256": "32c36126ec6c8961a7b493c21f18b63ecb0146faff84089d89566a659fd975fd",
+          "tag": "v0.103.4"
+        },
+        "license": "MIT",
+        "name": "pubs",
+        "noticeSha256": "dd3fa4de551514d2a1a1cad78c93ed40cf4c624e7dcf0c20fbb5e57dd1a96793",
+        "sqliteSha256": "b45b08b7c06441cc0b138b031ea5bd32bd5866aebf874c89d2ebf7fc6abb3691"
+      },
+      "inputsSha256": "06ad7c22b59f9acece8b6b1f70d4710a5bc6e992486ace6736c64d76cca42904",
       "report": {
         "bytes": 1972,
         "path": "dialect-scripts/pubs.mysql.report.json",
-        "sha256": "b1a8ea14174f5029c7070cf866aaf7bddffe48db895dfc98e492cc71658a86d1",
+        "sha256": "9a626da5ab943e9f410c0d89ff12c1c0d46ff477c3ba7c8a55ed73d3fd14d2f1",
         "warnings": {
           "values-normalized": 2,
           "view-not-carried": 1
@@ -29,29 +96,113 @@
       },
       "stored": {
         "decodedBytes": 206217,
-        "decodedSha256": "a56d1ce7eaf2dd2f5e5ef77f4a7e18700097e7072964ba7263167c465dc2a686",
+        "decodedSha256": "5984838c7e55589ab0ce5653f03a06c012b136cdcea510b0f026c6ff74fa2126",
         "files": [
           {
             "bytes": 206217,
             "path": "dialect-scripts/pubs.mysql.sql",
-            "sha256": "a56d1ce7eaf2dd2f5e5ef77f4a7e18700097e7072964ba7263167c465dc2a686"
+            "sha256": "5984838c7e55589ab0ce5653f03a06c012b136cdcea510b0f026c6ff74fa2126"
           }
         ],
         "mode": "plain"
       },
       "verification": {
-        "date": "2026-10-16",
+        "clientVersion": "mysql  Ver 8.4.11 for Linux on aarch64 (MySQL Community Server - GPL)",
+        "date": "2026-10-19",
         "differences": 0,
-        "engine": "MySQL 8.4.11 (official mysql:8.4 image)",
+        "engine": "MySQL 8.4.11",
         "image": "mysql:8.4@sha256:24989179f58856db763f418010c1169fecc944e3ec1ea7e921572d83eb070f70",
+        "loadSeconds": 0.2,
         "loadedWith": "--default-character-set=utf8mb4 --skip-commands --skip-system-command, stop at first error",
         "rows": 255,
-        "scriptSha256": "a56d1ce7eaf2dd2f5e5ef77f4a7e18700097e7072964ba7263167c465dc2a686",
+        "scriptSha256": "5984838c7e55589ab0ce5653f03a06c012b136cdcea510b0f026c6ff74fa2126",
         "secondLoadRefusedAtMarkerTable": true,
+        "tableRows": {
+          "authors": 23,
+          "discounts": 3,
+          "employee": 43,
+          "jobs": 14,
+          "pub_info": 8,
+          "publishers": 8,
+          "roysched": 86,
+          "sales": 21,
+          "stores": 6,
+          "titleauthor": 25,
+          "titles": 18
+        },
         "tables": 11,
         "valuesCompared": 1472,
-        "verifier": "datatug-cli internal/crossverify TestJourneyMySQL at v0.100.0, run locally over this exact script, loaded with the header's client flags and again with the plain client; reads source and target through Go drivers",
+        "verifier": "datatug-cli internal/crossverify TestJourneyMySQL at v0.103.4, run locally over this exact script, loaded with the header's client flags and again with the plain client; reads source and target through Go drivers",
+        "verifierSeconds": 0.6,
         "verifierWarnings": 3
+      }
+    },
+    "oracle": {
+      "inputs": {
+        "attribution": "Pubs sample database, Copyright (c) Microsoft Corporation, MIT licence, https://github.com/microsoft/sql-server-samples at revision beaab06ef72831089ca80e5355d65e661fd19b26",
+        "dialect": "oracle",
+        "edition": "DemoDB contract edition, identical to the SQLite/CSV/JSON",
+        "generator": {
+          "checksumsSha256": "32c36126ec6c8961a7b493c21f18b63ecb0146faff84089d89566a659fd975fd",
+          "tag": "v0.103.4"
+        },
+        "license": "MIT",
+        "name": "pubs",
+        "noticeSha256": "dd3fa4de551514d2a1a1cad78c93ed40cf4c624e7dcf0c20fbb5e57dd1a96793",
+        "sqliteSha256": "b45b08b7c06441cc0b138b031ea5bd32bd5866aebf874c89d2ebf7fc6abb3691"
+      },
+      "inputsSha256": "78157be4fee7546f5d77dd6c8cd54838a64bce824b506749026e049c9fa99cdf",
+      "report": {
+        "bytes": 3322,
+        "path": "dialect-scripts/pubs.oracle.report.json",
+        "sha256": "1e9a2065439a04c014fd91f6b7c20f08a3f6f65d4a3a0e8dda7774231abca009",
+        "warnings": {
+          "collation-not-carried": 4,
+          "values-normalized": 3,
+          "view-not-carried": 1
+        }
+      },
+      "stored": {
+        "decodedBytes": 139485,
+        "decodedSha256": "1c782df8d2a942ab93d2d8a81015b632e291585f1d08fda892c5fdd68a1d8acb",
+        "files": [
+          {
+            "bytes": 139485,
+            "path": "dialect-scripts/pubs.oracle.sql",
+            "sha256": "1c782df8d2a942ab93d2d8a81015b632e291585f1d08fda892c5fdd68a1d8acb"
+          }
+        ],
+        "mode": "plain"
+      },
+      "verification": {
+        "clientVersion": "SQL*Plus: Release 23.26.3.0.0 - Production Version 23.26.3.0.0",
+        "date": "2026-10-19",
+        "differences": 0,
+        "engine": "Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free / compatible 23.6.0 / AL32UTF8 / MAX_STRING_SIZE STANDARD",
+        "image": "gvenzl/oracle-free:23-slim@sha256:6d61d267a3b978c24c5ac1790e62e927416a0aec446bd86e4b3a1527562757bd",
+        "loadSeconds": 1.1,
+        "loadedWith": "NLS_LANG=.AL32UTF8 sqlplus -L -S, stop at first error",
+        "rows": 255,
+        "scriptSha256": "1c782df8d2a942ab93d2d8a81015b632e291585f1d08fda892c5fdd68a1d8acb",
+        "secondLoadRefusedAtMarkerTable": true,
+        "tableRows": {
+          "authors": 23,
+          "discounts": 3,
+          "employee": 43,
+          "jobs": 14,
+          "pub_info": 8,
+          "publishers": 8,
+          "roysched": 86,
+          "sales": 21,
+          "stores": 6,
+          "titleauthor": 25,
+          "titles": 18
+        },
+        "tables": 11,
+        "valuesCompared": 1472,
+        "verifier": "datatug-cli internal/crossverify TestJourneyOracle at v0.103.4, run locally over this exact script, loaded with NLS_LANG=.AL32UTF8 sqlplus -L -S from the file inside the server container; reads source and target through Go drivers",
+        "verifierSeconds": 0.8,
+        "verifierWarnings": 8
       }
     }
   }
